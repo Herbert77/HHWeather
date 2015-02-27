@@ -10,4 +10,20 @@
 
 @implementation HHWeatherItem
 
+- (instancetype) initWithCityName:(NSString *)cityName weather:(NSString *)weather temperature:(NSString *)temperature wind:(NSString *)wind humidity:(NSString *)humidity {
+    
+    self = [super init];
+    
+    if (self) {
+        
+        _cityName = cityName;
+        _weather = weather;
+        _temperature = temperature;
+        _wind = wind;
+        _humidity = humidity;
+    }
+    
+    return self;
+}
+
 @end

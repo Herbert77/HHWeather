@@ -8,6 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+@class HHWeatherItem;
+
 @interface HHWeatherItemStation : NSObject
+
+// Singleton instance
+@property (nonatomic, readonly) NSArray *allWeatherItems;
+
++ (instancetype) sharedStation;
 
 @end

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E5293E691AA0203600017658 /* HHWeatherItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E5293E681AA0203600017658 /* HHWeatherItem.m */; };
+		E5293E6C1AA03F1100017658 /* HHWeatherItemStation.m in Sources */ = {isa = PBXBuildFile; fileRef = E5293E6B1AA03F1100017658 /* HHWeatherItemStation.m */; };
 		E5FC08121A9DDD660012B6CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FC08111A9DDD660012B6CC /* main.m */; };
 		E5FC08151A9DDD660012B6CC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FC08141A9DDD660012B6CC /* AppDelegate.m */; };
 		E5FC081D1A9DDD660012B6CC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5FC081C1A9DDD660012B6CC /* Images.xcassets */; };
@@ -28,6 +30,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E5293E671AA0203600017658 /* HHWeatherItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HHWeatherItem.h; sourceTree = "<group>"; };
+		E5293E681AA0203600017658 /* HHWeatherItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHWeatherItem.m; sourceTree = "<group>"; };
+		E5293E6A1AA03F1100017658 /* HHWeatherItemStation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HHWeatherItemStation.h; sourceTree = "<group>"; };
+		E5293E6B1AA03F1100017658 /* HHWeatherItemStation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHWeatherItemStation.m; sourceTree = "<group>"; };
 		E5FC080C1A9DDD660012B6CC /* HHWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HHWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5FC08101A9DDD660012B6CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E5FC08111A9DDD660012B6CC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -136,6 +142,10 @@
 		E5FC08371A9DE0380012B6CC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E5293E671AA0203600017658 /* HHWeatherItem.h */,
+				E5293E681AA0203600017658 /* HHWeatherItem.m */,
+				E5293E6A1AA03F1100017658 /* HHWeatherItemStation.h */,
+				E5293E6B1AA03F1100017658 /* HHWeatherItemStation.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -252,7 +262,9 @@
 				E5FC083B1A9DE0DC0012B6CC /* HHHomeViewController.m in Sources */,
 				E5FC08151A9DDD660012B6CC /* AppDelegate.m in Sources */,
 				E5FC08121A9DDD660012B6CC /* main.m in Sources */,
+				E5293E691AA0203600017658 /* HHWeatherItem.m in Sources */,
 				E5FC083E1A9DE16B0012B6CC /* HHNavigationController.m in Sources */,
+				E5293E6C1AA03F1100017658 /* HHWeatherItemStation.m in Sources */,
 				E5FC08431A9DF8250012B6CC /* HHWeatherCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -425,6 +437,7 @@
 				E5FC08311A9DDD660012B6CC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E5FC08321A9DDD660012B6CC /* Build configuration list for PBXNativeTarget "HHWeatherTests" */ = {
 			isa = XCConfigurationList;
@@ -433,6 +446,7 @@
 				E5FC08341A9DDD660012B6CC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
