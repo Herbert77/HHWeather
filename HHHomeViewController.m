@@ -44,6 +44,9 @@
         navItem.rightBarButtonItem = addButtonItem;
         
         self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BackgroundImage"]];
+        
+        // remove the separator between the cells
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     
     return self;
