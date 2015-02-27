@@ -4,38 +4,32 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HHWeatherCell">
-            <connections>
-                <outlet property="cityNameLabel" destination="W5v-jp-ott" id="3aC-Rm-qst"/>
-                <outlet property="tempLabel" destination="z5T-bS-3fK" id="c76-rA-uNg"/>
-                <outlet property="weatherImageView" destination="hIS-sf-4Nw" id="fce-IW-ND9"/>
-            </connections>
-        </placeholder>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="weatherCell" rowHeight="76" id="kLu-Zc-yk2">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="76" id="kLu-Zc-yk2">
             <rect key="frame" x="0.0" y="0.0" width="320" height="76"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kLu-Zc-yk2" id="lii-xJ-Jyg">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="City" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W5v-jp-ott">
-                        <rect key="frame" x="19" y="27" width="70" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="17" y="18" width="100" height="40"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="12 °" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5T-bS-3fK">
-                        <rect key="frame" x="262" y="27" width="31" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="262" y="20" width="40" height="35"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hIS-sf-4Nw">
-                        <rect key="frame" x="195" y="14" width="51" height="47"/>
+                        <rect key="frame" x="184" y="14" width="51" height="47"/>
                     </imageView>
                 </subviews>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="701" y="405"/>
+            <point key="canvasLocation" x="816" y="471"/>
         </tableViewCell>
     </objects>
 </document>

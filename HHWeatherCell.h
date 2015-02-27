@@ -10,8 +10,8 @@
 
 @interface HHWeatherCell : UITableViewCell
 
-@property (nonatomic, weak) IBOutlet UILabel *cityNameLabel;
-@property (nonatomic, weak) IBOutlet UIImageView *weatherImageView;
-@property (nonatomic, weak) IBOutlet UILabel *tempLabel;
+@property (nonatomic, strong)  UILabel *cityNameLabel;
+@property (nonatomic, strong)  UIImageView *weatherImageView;
+@property (nonatomic, strong)  UILabel *tempLabel;
 
 @end

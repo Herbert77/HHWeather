@@ -44,6 +44,12 @@
         navItem.rightBarButtonItem = addButtonItem;
         
         self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BackgroundImage"]];
+        
+        // remove the separator between the cells
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        
+        // Editing Mode
+        
     }
     
     return self;
@@ -89,7 +95,7 @@
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     // TODO: configure numberOfRows
-    return 1;
+    return 5;
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -102,8 +108,12 @@
     if (!cell) {
         
         cell = [[HHWeatherCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-        
     }
+    
+    cell.cityNameLabel.text = @"WuHan";
+    cell.weatherImageView.image = [UIImage imageNamed:@"Sunny"];
+    cell.tempLabel.text = @"7° C";
+    cell.backgroundColor = [UIColor colorWithRed:241/255.0 green:196/255.0 blue:15/255.0 alpha:1.0];
     
     return cell;
 }
@@ -112,6 +122,17 @@
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     return 76;
+}
+
+- (void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+        // TODO: Delete the weather city from the data Modal
+        
+        // Delete the cells on the basis of indexPath
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+    }
 }
 
 @end
