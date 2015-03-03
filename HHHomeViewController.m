@@ -8,6 +8,12 @@
 
 #import "HHHomeViewController.h"
 #import "HHWeatherCell.h"
+#import "HHMainTableViewController.h"
+
+#import "HHWeatherItem.h"
+#import "HHWeatherItemStation.h"
+
+#import "HHWeatherColor.h"
 
 @interface HHHomeViewController ()
 
@@ -75,8 +81,7 @@
 //            NSLog(@"%@", font);
 //        }
 //    }
-    
-    [self.tableView registerNib:[UINib nibWithNibName:@"HHWeatherCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"HHWeatherCell"];
+
     
 }
 
@@ -89,13 +94,15 @@
 - (void) addButtonTapped:(id)sender {
     
     // TODO: addButtonTapped:
+    HHMainTableViewController *mainTableViewController = [[HHMainTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    [self.navigationController pushViewController:mainTableViewController animated:YES];
 }
 
 #pragma mark - Table view data source
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     // TODO: configure numberOfRows
-    return 5;
+    return [[[HHWeatherItemStation sharedStation] allWeatherItems] count];
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -109,11 +116,25 @@
         
         cell = [[HHWeatherCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
+
+    // TODO: Configure the content of the cell
+    NSArray *allWeatherItems = [[HHWeatherItemStation sharedStation] allWeatherItems];
+    HHWeatherItem *item = [allWeatherItems objectAtIndex:[indexPath row]];
     
-    cell.cityNameLabel.text = @"WuHan";
-    cell.weatherImageView.image = [UIImage imageNamed:@"Sunny"];
-    cell.tempLabel.text = @"7° C";
-    cell.backgroundColor = [UIColor colorWithRed:241/255.0 green:196/255.0 blue:15/255.0 alpha:1.0];
+    // City name
+    cell.cityNameLabel.text = item.cityName;
+
+    
+    // Weather image
+    NSString *imageName = [NSString stringWithFormat:@"%@", item.weather];
+    cell.weatherImageView.image = [UIImage imageNamed:imageName];
+    
+    // Temperature
+    cell.tempLabel.text = item.temperature;
+
+    // Get the color pallete, then configure the backgroundColor of cells in accordance with weather
+    HHWeatherColor *colorPallete = [HHWeatherColor sharedColorPalette];
+    cell.backgroundColor = [colorPallete colorForWeather:item.weather];
     
     return cell;
 }
