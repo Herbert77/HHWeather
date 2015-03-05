@@ -9,6 +9,7 @@
 #import "HHHomeViewController.h"
 #import "HHWeatherCell.h"
 #import "HHMainTableViewController.h"
+#import "HHNavigationController.h"
 
 #import "HHWeatherItem.h"
 #import "HHWeatherItemStation.h"
@@ -82,13 +83,25 @@
 //        }
 //    }
 
+}
+
+- (void) viewWillDisappear:(BOOL)animated {
     
+    [super viewWillDisappear:animated];
+    
+    // Turn off the menu
+    if (((HHNavigationController *)self.navigationController).menuIsOpen == YES) {
+        
+        [((HHNavigationController *)self.navigationController).pulldownMenu  animateDropDown];
+
+    }
 }
 
 #pragma mark - Action
 - (void) menuButtonTapped:(id)sender {
     
     // TODO: menuButtonTapped:
+    [((HHNavigationController *)self.navigationController).pulldownMenu  animateDropDown];
 }
 
 - (void) addButtonTapped:(id)sender {

@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PulldownMenu.h"
 
 @interface HHNavigationController : UINavigationController
+
+@property (nonatomic, retain) PulldownMenu *pulldownMenu;
+
+@property (nonatomic) BOOL menuIsOpen;
 
 @end

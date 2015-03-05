@@ -8,7 +8,10 @@
 
 #import "HHNavigationController.h"
 
-@interface HHNavigationController ()
+#import "HHProfileViewController.h"
+#import "HHSettingsTableController.h"
+
+@interface HHNavigationController () <PulldownMenuDelegate>
 
 @end
 
@@ -16,12 +19,57 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    _pulldownMenu = [[PulldownMenu alloc] initWithNavigationController:self];
+    [self.view insertSubview:_pulldownMenu belowSubview:self.navigationBar];
+    
+    [_pulldownMenu insertButton:@"Settings"];
+    [_pulldownMenu insertButton:@"Profile"];
+    [_pulldownMenu insertButton:@"Feed back"];
+    
+    _pulldownMenu.delegate = self;
+    
+    [_pulldownMenu loadMenu];
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - Pull down menu delegate
+- (void)menuItemSelected:(NSIndexPath *)indexPath {
+    
+    NSLog(@"%ld", (long)indexPath.item);
+    
+    if (indexPath.item == 0) {
+        
+        // TODO: Setting VC
+        HHSettingsTableController *settingsTableController = [[HHSettingsTableController alloc] init];
+        [self presentViewController:settingsTableController animated:YES completion:nil];
+    }
+    else if (indexPath.item == 1) {
+
+        HHProfileViewController *profileViewController = [[HHProfileViewController alloc] init];
+        [self presentViewController:profileViewController animated:YES completion:nil];
+
+    }
+    else {
+        
+        // TODO: Feed bck VC
+        
+    }
+    
+}
+
+- (void)pullDownAnimated:(BOOL)open {
+    
+    self.menuIsOpen = open;
+    
+    if (open) {
+        
+        NSLog(@"Pull down menu open ~");
+    }
+    else {
+        
+        NSLog(@"Pull down menu closed ~");
+    }
 }
 
 
