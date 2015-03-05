@@ -26,4 +26,11 @@
     return self;
 }
 
+- (NSString *)description {
+    
+    NSString *descritionString = [NSString stringWithFormat:@"%@: %@ %@ %@ %@ ", self.cityName, self.weather, self.temperature, self.wind, self.humidity];
+    
+    return descritionString;
+}
+
 @end

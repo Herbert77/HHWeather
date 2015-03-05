@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "HHNavigationController.h"
 #import "HHHomeViewController.h"
+#import "HHWeatherItemStation.h"
 
 @interface AppDelegate ()
 
@@ -29,6 +30,13 @@
     // Configure the appearance of navigationBar
     [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:110/255.0 green:182.0/255.0 blue:230/255.0 alpha:1.0]];
     [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:236/255.0 green:240/255.0 blue:241/255.0 alpha:1.0]];
+    
+
+    // Create weather data Source
+    HHWeatherItemStation *weatherItemStation = [HHWeatherItemStation sharedStation];
+    
+    // Get the temp weather data
+    [weatherItemStation getTempWeatherDataForTest];
     
     // TODO: Set root view controller for the window
     self.window.rootViewController = navigationController;

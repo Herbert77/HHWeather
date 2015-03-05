@@ -18,4 +18,9 @@
 
 + (instancetype) sharedStation;
 
+- (HHWeatherItem *) createdItemForCity:(NSString *)cityName;
+- (void) removeItem:(HHWeatherItem *)weatherItem;
+
+// For test
+- (void) getTempWeatherDataForTest;
 @end
