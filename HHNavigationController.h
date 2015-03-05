@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PulldownMenu.h"
 
-@interface HHNavigationController : UINavigationController
+#import <MessageUI/MFMailComposeViewController.h>
+
+@interface HHNavigationController : UINavigationController <MFMailComposeViewControllerDelegate>
+
+@property (nonatomic, retain) PulldownMenu *pulldownMenu;
+
+@property (nonatomic) BOOL menuIsOpen;
 
 @end

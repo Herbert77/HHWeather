@@ -8,15 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		15F483B5E98FFFE016FBDDA4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FC67DEB84D6847DFDECC3DA /* libPods.a */; };
+		E5051DD21AA1D3FB00CD88F2 /* HHBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5051DD11AA1D3FB00CD88F2 /* HHBaseTableViewController.m */; };
+		E5051DD41AA1D69B00CD88F2 /* TableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5051DD31AA1D69B00CD88F2 /* TableCell.xib */; };
+		E5051DD91AA1E1A300CD88F2 /* HHMainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5051DD81AA1E1A300CD88F2 /* HHMainTableViewController.m */; };
+		E5051DDC1AA1E22800CD88F2 /* HHResultTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5051DDB1AA1E22800CD88F2 /* HHResultTableViewController.m */; };
+		E51608E31AA5BDFB002ACE61 /* HHSettingsTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = E51608E11AA5BDFB002ACE61 /* HHSettingsTableController.m */; };
+		E51608E41AA5BDFB002ACE61 /* HHSettingsTableController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E51608E21AA5BDFB002ACE61 /* HHSettingsTableController.xib */; };
 		E5293E691AA0203600017658 /* HHWeatherItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E5293E681AA0203600017658 /* HHWeatherItem.m */; };
 		E5293E6C1AA03F1100017658 /* HHWeatherItemStation.m in Sources */ = {isa = PBXBuildFile; fileRef = E5293E6B1AA03F1100017658 /* HHWeatherItemStation.m */; };
+		E56EEF071AA56A670019CCF7 /* CustomMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E56EEF041AA56A670019CCF7 /* CustomMenuCell.m */; };
+		E56EEF081AA56A670019CCF7 /* PulldownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E56EEF061AA56A670019CCF7 /* PulldownMenu.m */; };
+		E56EEF0D1AA56C230019CCF7 /* HHProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E56EEF0B1AA56C230019CCF7 /* HHProfileViewController.m */; };
+		E56EEF0E1AA56C230019CCF7 /* HHProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E56EEF0C1AA56C230019CCF7 /* HHProfileViewController.xib */; };
+		E58B88A91AA7EB3500A6BC60 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E58B88A81AA7EB3500A6BC60 /* MessageUI.framework */; };
+		E5C221E01AA2C25900B3BD23 /* HHWeatherColor.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C221DF1AA2C25900B3BD23 /* HHWeatherColor.m */; };
 		E5FC08121A9DDD660012B6CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FC08111A9DDD660012B6CC /* main.m */; };
 		E5FC08151A9DDD660012B6CC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FC08141A9DDD660012B6CC /* AppDelegate.m */; };
 		E5FC081D1A9DDD660012B6CC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5FC081C1A9DDD660012B6CC /* Images.xcassets */; };
 		E5FC082C1A9DDD660012B6CC /* HHWeatherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FC082B1A9DDD660012B6CC /* HHWeatherTests.m */; };
 		E5FC083B1A9DE0DC0012B6CC /* HHHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FC083A1A9DE0DC0012B6CC /* HHHomeViewController.m */; };
 		E5FC083E1A9DE16B0012B6CC /* HHNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FC083D1A9DE16B0012B6CC /* HHNavigationController.m */; };
-		E5FC08401A9DF8030012B6CC /* HHWeatherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5FC083F1A9DF8030012B6CC /* HHWeatherCell.xib */; };
 		E5FC08431A9DF8250012B6CC /* HHWeatherCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FC08421A9DF8250012B6CC /* HHWeatherCell.m */; };
 /* End PBXBuildFile section */
 
@@ -33,10 +44,30 @@
 /* Begin PBXFileReference section */
 		7FC67DEB84D6847DFDECC3DA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B57FADF600104EE781D94B1C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		E5051DD01AA1D3FB00CD88F2 /* HHBaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HHBaseTableViewController.h; sourceTree = "<group>"; };
+		E5051DD11AA1D3FB00CD88F2 /* HHBaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHBaseTableViewController.m; sourceTree = "<group>"; };
+		E5051DD31AA1D69B00CD88F2 /* TableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableCell.xib; sourceTree = "<group>"; };
+		E5051DD71AA1E1A300CD88F2 /* HHMainTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HHMainTableViewController.h; sourceTree = "<group>"; };
+		E5051DD81AA1E1A300CD88F2 /* HHMainTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHMainTableViewController.m; sourceTree = "<group>"; };
+		E5051DDA1AA1E22800CD88F2 /* HHResultTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HHResultTableViewController.h; sourceTree = "<group>"; };
+		E5051DDB1AA1E22800CD88F2 /* HHResultTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHResultTableViewController.m; sourceTree = "<group>"; };
+		E51608E01AA5BDFB002ACE61 /* HHSettingsTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HHSettingsTableController.h; sourceTree = "<group>"; };
+		E51608E11AA5BDFB002ACE61 /* HHSettingsTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHSettingsTableController.m; sourceTree = "<group>"; };
+		E51608E21AA5BDFB002ACE61 /* HHSettingsTableController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HHSettingsTableController.xib; sourceTree = "<group>"; };
 		E5293E671AA0203600017658 /* HHWeatherItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HHWeatherItem.h; sourceTree = "<group>"; };
 		E5293E681AA0203600017658 /* HHWeatherItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHWeatherItem.m; sourceTree = "<group>"; };
 		E5293E6A1AA03F1100017658 /* HHWeatherItemStation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HHWeatherItemStation.h; sourceTree = "<group>"; };
 		E5293E6B1AA03F1100017658 /* HHWeatherItemStation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHWeatherItemStation.m; sourceTree = "<group>"; };
+		E56EEF031AA56A670019CCF7 /* CustomMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomMenuCell.h; sourceTree = "<group>"; };
+		E56EEF041AA56A670019CCF7 /* CustomMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomMenuCell.m; sourceTree = "<group>"; };
+		E56EEF051AA56A670019CCF7 /* PulldownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PulldownMenu.h; sourceTree = "<group>"; };
+		E56EEF061AA56A670019CCF7 /* PulldownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PulldownMenu.m; sourceTree = "<group>"; };
+		E56EEF0A1AA56C230019CCF7 /* HHProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HHProfileViewController.h; sourceTree = "<group>"; };
+		E56EEF0B1AA56C230019CCF7 /* HHProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHProfileViewController.m; sourceTree = "<group>"; };
+		E56EEF0C1AA56C230019CCF7 /* HHProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HHProfileViewController.xib; sourceTree = "<group>"; };
+		E58B88A81AA7EB3500A6BC60 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		E5C221DE1AA2C25900B3BD23 /* HHWeatherColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HHWeatherColor.h; sourceTree = "<group>"; };
+		E5C221DF1AA2C25900B3BD23 /* HHWeatherColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHWeatherColor.m; sourceTree = "<group>"; };
 		E5FC080C1A9DDD660012B6CC /* HHWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HHWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5FC08101A9DDD660012B6CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E5FC08111A9DDD660012B6CC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -50,7 +81,6 @@
 		E5FC083A1A9DE0DC0012B6CC /* HHHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHHomeViewController.m; sourceTree = "<group>"; };
 		E5FC083C1A9DE16B0012B6CC /* HHNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HHNavigationController.h; sourceTree = "<group>"; };
 		E5FC083D1A9DE16B0012B6CC /* HHNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHNavigationController.m; sourceTree = "<group>"; };
-		E5FC083F1A9DF8030012B6CC /* HHWeatherCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HHWeatherCell.xib; sourceTree = "<group>"; };
 		E5FC08411A9DF8250012B6CC /* HHWeatherCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HHWeatherCell.h; sourceTree = "<group>"; };
 		E5FC08421A9DF8250012B6CC /* HHWeatherCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHWeatherCell.m; sourceTree = "<group>"; };
 		E64A6175E5F91681DE0D284D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -61,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E58B88A91AA7EB3500A6BC60 /* MessageUI.framework in Frameworks */,
 				15F483B5E98FFFE016FBDDA4 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -78,6 +109,7 @@
 		255972935C4EA6C8119344B4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E58B88A81AA7EB3500A6BC60 /* MessageUI.framework */,
 				7FC67DEB84D6847DFDECC3DA /* libPods.a */,
 			);
 			name = Frameworks;
@@ -92,13 +124,63 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		E5051DD51AA1D83A00CD88F2 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				E5051DD01AA1D3FB00CD88F2 /* HHBaseTableViewController.h */,
+				E5051DD11AA1D3FB00CD88F2 /* HHBaseTableViewController.m */,
+				E5051DD71AA1E1A300CD88F2 /* HHMainTableViewController.h */,
+				E5051DD81AA1E1A300CD88F2 /* HHMainTableViewController.m */,
+				E5051DDA1AA1E22800CD88F2 /* HHResultTableViewController.h */,
+				E5051DDB1AA1E22800CD88F2 /* HHResultTableViewController.m */,
+			);
+			name = Search;
+			sourceTree = "<group>";
+		};
+		E5051DD61AA1D84F00CD88F2 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				E5FC08391A9DE0DC0012B6CC /* HHHomeViewController.h */,
+				E5FC083A1A9DE0DC0012B6CC /* HHHomeViewController.m */,
+				E5FC083C1A9DE16B0012B6CC /* HHNavigationController.h */,
+				E5FC083D1A9DE16B0012B6CC /* HHNavigationController.m */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		E56EEF021AA56A220019CCF7 /* PullDownMenu */ = {
+			isa = PBXGroup;
+			children = (
+				E56EEF031AA56A670019CCF7 /* CustomMenuCell.h */,
+				E56EEF041AA56A670019CCF7 /* CustomMenuCell.m */,
+				E56EEF051AA56A670019CCF7 /* PulldownMenu.h */,
+				E56EEF061AA56A670019CCF7 /* PulldownMenu.m */,
+			);
+			name = PullDownMenu;
+			sourceTree = "<group>";
+		};
+		E56EEF091AA56BFD0019CCF7 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				E56EEF0A1AA56C230019CCF7 /* HHProfileViewController.h */,
+				E56EEF0B1AA56C230019CCF7 /* HHProfileViewController.m */,
+				E56EEF0C1AA56C230019CCF7 /* HHProfileViewController.xib */,
+				E51608E01AA5BDFB002ACE61 /* HHSettingsTableController.h */,
+				E51608E11AA5BDFB002ACE61 /* HHSettingsTableController.m */,
+				E51608E21AA5BDFB002ACE61 /* HHSettingsTableController.xib */,
+			);
+			name = Menu;
+			sourceTree = "<group>";
+		};
 		E5FC08031A9DDD660012B6CC = {
 			isa = PBXGroup;
 			children = (
+				E5051DD31AA1D69B00CD88F2 /* TableCell.xib */,
 				E5FC08371A9DE0380012B6CC /* Model */,
 				E5FC08381A9DE0400012B6CC /* Views */,
 				E5FC08351A9DE0180012B6CC /* Controllers */,
 				E5FC080E1A9DDD660012B6CC /* HHWeather */,
+				E56EEF021AA56A220019CCF7 /* PullDownMenu */,
 				E5FC08281A9DDD660012B6CC /* HHWeatherTests */,
 				E5FC080D1A9DDD660012B6CC /* Products */,
 				6C8E9FB9BFE70CFB4D9153C0 /* Pods */,
@@ -155,10 +237,9 @@
 		E5FC08351A9DE0180012B6CC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				E5FC08391A9DE0DC0012B6CC /* HHHomeViewController.h */,
-				E5FC083A1A9DE0DC0012B6CC /* HHHomeViewController.m */,
-				E5FC083C1A9DE16B0012B6CC /* HHNavigationController.h */,
-				E5FC083D1A9DE16B0012B6CC /* HHNavigationController.m */,
+				E56EEF091AA56BFD0019CCF7 /* Menu */,
+				E5051DD61AA1D84F00CD88F2 /* Home */,
+				E5051DD51AA1D83A00CD88F2 /* Search */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -170,6 +251,8 @@
 				E5293E681AA0203600017658 /* HHWeatherItem.m */,
 				E5293E6A1AA03F1100017658 /* HHWeatherItemStation.h */,
 				E5293E6B1AA03F1100017658 /* HHWeatherItemStation.m */,
+				E5C221DE1AA2C25900B3BD23 /* HHWeatherColor.h */,
+				E5C221DF1AA2C25900B3BD23 /* HHWeatherColor.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -177,7 +260,6 @@
 		E5FC08381A9DE0400012B6CC /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E5FC083F1A9DF8030012B6CC /* HHWeatherCell.xib */,
 				E5FC08411A9DF8250012B6CC /* HHWeatherCell.h */,
 				E5FC08421A9DF8250012B6CC /* HHWeatherCell.m */,
 			);
@@ -266,8 +348,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5FC08401A9DF8030012B6CC /* HHWeatherCell.xib in Resources */,
+				E5051DD41AA1D69B00CD88F2 /* TableCell.xib in Resources */,
 				E5FC081D1A9DDD660012B6CC /* Images.xcassets in Resources */,
+				E56EEF0E1AA56C230019CCF7 /* HHProfileViewController.xib in Resources */,
+				E51608E41AA5BDFB002ACE61 /* HHSettingsTableController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,11 +402,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5C221E01AA2C25900B3BD23 /* HHWeatherColor.m in Sources */,
+				E5051DD21AA1D3FB00CD88F2 /* HHBaseTableViewController.m in Sources */,
+				E56EEF0D1AA56C230019CCF7 /* HHProfileViewController.m in Sources */,
 				E5FC083B1A9DE0DC0012B6CC /* HHHomeViewController.m in Sources */,
+				E56EEF071AA56A670019CCF7 /* CustomMenuCell.m in Sources */,
+				E5051DDC1AA1E22800CD88F2 /* HHResultTableViewController.m in Sources */,
+				E56EEF081AA56A670019CCF7 /* PulldownMenu.m in Sources */,
 				E5FC08151A9DDD660012B6CC /* AppDelegate.m in Sources */,
 				E5FC08121A9DDD660012B6CC /* main.m in Sources */,
 				E5293E691AA0203600017658 /* HHWeatherItem.m in Sources */,
 				E5FC083E1A9DE16B0012B6CC /* HHNavigationController.m in Sources */,
+				E5051DD91AA1E1A300CD88F2 /* HHMainTableViewController.m in Sources */,
+				E51608E31AA5BDFB002ACE61 /* HHSettingsTableController.m in Sources */,
 				E5293E6C1AA03F1100017658 /* HHWeatherItemStation.m in Sources */,
 				E5FC08431A9DF8250012B6CC /* HHWeatherCell.m in Sources */,
 			);
@@ -429,6 +521,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = HHWeather/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
@@ -441,6 +534,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = HHWeather/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
