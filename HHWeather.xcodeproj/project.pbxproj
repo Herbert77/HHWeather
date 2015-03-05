@@ -20,6 +20,7 @@
 		E56EEF081AA56A670019CCF7 /* PulldownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E56EEF061AA56A670019CCF7 /* PulldownMenu.m */; };
 		E56EEF0D1AA56C230019CCF7 /* HHProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E56EEF0B1AA56C230019CCF7 /* HHProfileViewController.m */; };
 		E56EEF0E1AA56C230019CCF7 /* HHProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E56EEF0C1AA56C230019CCF7 /* HHProfileViewController.xib */; };
+		E58B88A91AA7EB3500A6BC60 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E58B88A81AA7EB3500A6BC60 /* MessageUI.framework */; };
 		E5C221E01AA2C25900B3BD23 /* HHWeatherColor.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C221DF1AA2C25900B3BD23 /* HHWeatherColor.m */; };
 		E5FC08121A9DDD660012B6CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FC08111A9DDD660012B6CC /* main.m */; };
 		E5FC08151A9DDD660012B6CC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FC08141A9DDD660012B6CC /* AppDelegate.m */; };
@@ -64,6 +65,7 @@
 		E56EEF0A1AA56C230019CCF7 /* HHProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HHProfileViewController.h; sourceTree = "<group>"; };
 		E56EEF0B1AA56C230019CCF7 /* HHProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHProfileViewController.m; sourceTree = "<group>"; };
 		E56EEF0C1AA56C230019CCF7 /* HHProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HHProfileViewController.xib; sourceTree = "<group>"; };
+		E58B88A81AA7EB3500A6BC60 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		E5C221DE1AA2C25900B3BD23 /* HHWeatherColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HHWeatherColor.h; sourceTree = "<group>"; };
 		E5C221DF1AA2C25900B3BD23 /* HHWeatherColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHWeatherColor.m; sourceTree = "<group>"; };
 		E5FC080C1A9DDD660012B6CC /* HHWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HHWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E58B88A91AA7EB3500A6BC60 /* MessageUI.framework in Frameworks */,
 				15F483B5E98FFFE016FBDDA4 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -106,6 +109,7 @@
 		255972935C4EA6C8119344B4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E58B88A81AA7EB3500A6BC60 /* MessageUI.framework */,
 				7FC67DEB84D6847DFDECC3DA /* libPods.a */,
 			);
 			name = Frameworks;

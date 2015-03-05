@@ -39,7 +39,7 @@
         [self addSubview:_customImageView];
         
         // Configure the text label
-        _customLabel = [[UILabel alloc] initWithFrame:CGRectMake(135, 13, 120, 23)];
+        _customLabel = [[UILabel alloc] initWithFrame:CGRectMake(135, 15, 120, 23)];
         _customLabel.textColor = [[HHWeatherColor sharedColorPalette] colorForText];
         _customLabel.font = [UIFont fontWithName:@"AvenirNext-UltraLight" size:20];
         [self addSubview:_customLabel];

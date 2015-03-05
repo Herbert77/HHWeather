@@ -53,7 +53,7 @@
     else {
         
         // TODO: Feed bck VC
-        
+        [self sendMailInApp];
     }
     
 }
@@ -70,6 +70,76 @@
         
         NSLog(@"Pull down menu closed ~");
     }
+}
+
+
+#pragma mark - Send email in app
+- (void) sendMailInApp {
+    
+    Class mailClass = (NSClassFromString(@"MFMailComposeViewController"));
+    if (!mailClass) {
+        
+        UIAlertView *alertView = [[UIAlertView alloc]
+                                  initWithTitle:@"Notice"
+                                  message:@"The current version of system doesn't support the email fuction!"
+                                  delegate:self
+                                  cancelButtonTitle:@"OK"
+                                  otherButtonTitles: nil];
+        [alertView show];
+        
+        return;
+    }
+    
+    if (![mailClass canSendMail]) {
+        UIAlertView *alertView_2 = [[UIAlertView alloc]
+                                    initWithTitle:@"Notice" message:@"You haven't logged in email account!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alertView_2 show];
+        return;
+    }
+    
+    [self displayMailPicker];
+}
+
+// Trigger the window for sending email
+- (void) displayMailPicker {
+    
+    MFMailComposeViewController *mailPicker = [[MFMailComposeViewController alloc] init];
+    mailPicker.mailComposeDelegate = self;
+    
+    [mailPicker setSubject:@"HHWeather feed back"];
+    
+    NSArray *toRecipients = [NSArray arrayWithObject:@"herbert7789@hotmail.com"];
+    [mailPicker setToRecipients:toRecipients];
+    
+    NSString *emailBody = @"</font>正文";
+    [mailPicker setMessageBody:emailBody isHTML:YES];
+    [self presentViewController:mailPicker animated:YES completion:nil];
+    
+}
+
+#pragma mark - MFMailComposeViewController delegate
+- (void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    NSString *message;
+    
+    switch (result) {
+        case MFMailComposeResultCancelled:
+            message = @"User cancel to edit the mail.";
+            break;
+        case MFMailComposeResultSaved:
+            message = @"User has succeed in saving mail.";
+            break;
+        case MFMailComposeResultSent:
+            message = @"User has tapped button for sending. The mail is in the queue.";
+            break;
+        default:
+            message = @"";
+            break;
+    }
+    
+    NSLog(@"%@", message);
 }
 
 
