@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "Sizzler.png"
+      "filename" : "humiditySymbol.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "Sizzler@2x.png"
+      "filename" : "humiditySymbol@2x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "Sizzler@3x.png"
+      "filename" : "humiditySymbol@3x.png"
     }
   ],
   "info" : {
