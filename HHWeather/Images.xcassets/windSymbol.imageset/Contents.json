@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "Sizzler.png"
+      "filename" : "windSymbol.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "Sizzler@2x.png"
+      "filename" : "windSymbol@2x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "Sizzler@3x.png"
+      "filename" : "windSymbol@3x.png"
     }
   ],
   "info" : {
