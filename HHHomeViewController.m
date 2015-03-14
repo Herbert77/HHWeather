@@ -16,6 +16,8 @@
 
 #import "HHWeatherColor.h"
 
+#import "HHDetailViewController.h"
+
 @interface HHHomeViewController ()
 
 @end
@@ -167,6 +169,16 @@
         // Delete the cells on the basis of indexPath
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationLeft];
     }
+}
+
+#pragma mark - Table view delegate
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    HHDetailViewController *detailViewController = [[HHDetailViewController alloc] init];
+    [self.navigationController presentViewController:detailViewController animated:YES completion:NULL];
+    
+    // TODO: Deliver the data for detail view
+    
 }
 
 @end

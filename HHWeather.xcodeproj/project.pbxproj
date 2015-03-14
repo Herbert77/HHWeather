@@ -16,6 +16,8 @@
 		E51608E41AA5BDFB002ACE61 /* HHSettingsTableController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E51608E21AA5BDFB002ACE61 /* HHSettingsTableController.xib */; };
 		E5293E691AA0203600017658 /* HHWeatherItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E5293E681AA0203600017658 /* HHWeatherItem.m */; };
 		E5293E6C1AA03F1100017658 /* HHWeatherItemStation.m in Sources */ = {isa = PBXBuildFile; fileRef = E5293E6B1AA03F1100017658 /* HHWeatherItemStation.m */; };
+		E562CE151AB3D2F8001EEE1D /* HHDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E562CE141AB3D2F8001EEE1D /* HHDetailViewController.m */; };
+		E562CE181AB3D31F001EEE1D /* HHWeatherButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E562CE171AB3D31F001EEE1D /* HHWeatherButton.m */; };
 		E56EEF071AA56A670019CCF7 /* CustomMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E56EEF041AA56A670019CCF7 /* CustomMenuCell.m */; };
 		E56EEF081AA56A670019CCF7 /* PulldownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E56EEF061AA56A670019CCF7 /* PulldownMenu.m */; };
 		E56EEF0D1AA56C230019CCF7 /* HHProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E56EEF0B1AA56C230019CCF7 /* HHProfileViewController.m */; };
@@ -58,6 +60,10 @@
 		E5293E681AA0203600017658 /* HHWeatherItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHWeatherItem.m; sourceTree = "<group>"; };
 		E5293E6A1AA03F1100017658 /* HHWeatherItemStation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HHWeatherItemStation.h; sourceTree = "<group>"; };
 		E5293E6B1AA03F1100017658 /* HHWeatherItemStation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHWeatherItemStation.m; sourceTree = "<group>"; };
+		E562CE131AB3D2F8001EEE1D /* HHDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HHDetailViewController.h; sourceTree = "<group>"; };
+		E562CE141AB3D2F8001EEE1D /* HHDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHDetailViewController.m; sourceTree = "<group>"; };
+		E562CE161AB3D31F001EEE1D /* HHWeatherButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HHWeatherButton.h; sourceTree = "<group>"; };
+		E562CE171AB3D31F001EEE1D /* HHWeatherButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHWeatherButton.m; sourceTree = "<group>"; };
 		E56EEF031AA56A670019CCF7 /* CustomMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomMenuCell.h; sourceTree = "<group>"; };
 		E56EEF041AA56A670019CCF7 /* CustomMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomMenuCell.m; sourceTree = "<group>"; };
 		E56EEF051AA56A670019CCF7 /* PulldownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PulldownMenu.h; sourceTree = "<group>"; };
@@ -172,6 +178,15 @@
 			name = Menu;
 			sourceTree = "<group>";
 		};
+		E580ECC81AAE873E00AC74AE /* WeatherDetail */ = {
+			isa = PBXGroup;
+			children = (
+				E562CE131AB3D2F8001EEE1D /* HHDetailViewController.h */,
+				E562CE141AB3D2F8001EEE1D /* HHDetailViewController.m */,
+			);
+			name = WeatherDetail;
+			sourceTree = "<group>";
+		};
 		E5FC08031A9DDD660012B6CC = {
 			isa = PBXGroup;
 			children = (
@@ -237,6 +252,7 @@
 		E5FC08351A9DE0180012B6CC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E580ECC81AAE873E00AC74AE /* WeatherDetail */,
 				E56EEF091AA56BFD0019CCF7 /* Menu */,
 				E5051DD61AA1D84F00CD88F2 /* Home */,
 				E5051DD51AA1D83A00CD88F2 /* Search */,
@@ -262,6 +278,8 @@
 			children = (
 				E5FC08411A9DF8250012B6CC /* HHWeatherCell.h */,
 				E5FC08421A9DF8250012B6CC /* HHWeatherCell.m */,
+				E562CE161AB3D31F001EEE1D /* HHWeatherButton.h */,
+				E562CE171AB3D31F001EEE1D /* HHWeatherButton.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -404,7 +422,9 @@
 			files = (
 				E5C221E01AA2C25900B3BD23 /* HHWeatherColor.m in Sources */,
 				E5051DD21AA1D3FB00CD88F2 /* HHBaseTableViewController.m in Sources */,
+				E562CE181AB3D31F001EEE1D /* HHWeatherButton.m in Sources */,
 				E56EEF0D1AA56C230019CCF7 /* HHProfileViewController.m in Sources */,
+				E562CE151AB3D2F8001EEE1D /* HHDetailViewController.m in Sources */,
 				E5FC083B1A9DE0DC0012B6CC /* HHHomeViewController.m in Sources */,
 				E56EEF071AA56A670019CCF7 /* CustomMenuCell.m in Sources */,
 				E5051DDC1AA1E22800CD88F2 /* HHResultTableViewController.m in Sources */,
