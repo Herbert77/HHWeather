@@ -37,7 +37,7 @@
         UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 44)];
         titleLabel.backgroundColor = [UIColor clearColor];
         titleLabel.font = [UIFont fontWithName:@"AvenirNext-Medium" size:20];
-        titleLabel.text = @"  Weather °";
+        titleLabel.text = @" MiniWeather °";
         titleLabel.textColor = [UIColor colorWithRed:236/255.0 green:240/255.0 blue:241/255.0 alpha:1.0];
         
         navItem.titleView = titleLabel;
