@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+/**
+ *  配置UI元素色彩的单实例对象
+ */
 @interface HHWeatherColor : NSObject
 
 @property (nonatomic, strong) NSDictionary *colorsDic;
