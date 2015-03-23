@@ -10,4 +10,6 @@
 
 @interface HHHomeViewController : UITableViewController
 
+@property (nonatomic) BOOL netWorkAvailable;
+
 @end
