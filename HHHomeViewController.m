@@ -18,6 +18,10 @@
 
 #import "HHDetailViewController.h"
 
+#import "AFNetworking.h"
+
+#import "HHDataManager.h"
+
 @interface HHHomeViewController ()
 
 @end
@@ -37,7 +41,7 @@
         UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 44)];
         titleLabel.backgroundColor = [UIColor clearColor];
         titleLabel.font = [UIFont fontWithName:@"AvenirNext-Medium" size:20];
-        titleLabel.text = @"  Weather °";
+        titleLabel.text = @" MiniWeather °";
         titleLabel.textColor = [UIColor colorWithRed:236/255.0 green:240/255.0 blue:241/255.0 alpha:1.0];
         
         navItem.titleView = titleLabel;
@@ -59,6 +63,7 @@
         
         // Editing Mode
         
+    
     }
     
     return self;
@@ -84,6 +89,21 @@
 //            NSLog(@"%@", font);
 //        }
 //    }
+    
+    // TODO:Check the network status
+
+    
+      
+    NSLog(@"self.netWorkAvailable %id", self.netWorkAvailable);
+    
+//    if (!self.netWorkAvailable) {
+//        
+//        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Notice" message:@"The netWork is not available." delegate:self cancelButtonTitle:@"done" otherButtonTitles: nil];
+//        
+//        [alertView show];
+//    }
+    
+    [[HHDataManager sharedDataManager] requestWeatherDataForCity:@"武汉"];
 
 }
 
@@ -117,7 +137,8 @@
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     // TODO: configure numberOfRows
-    return [[[HHWeatherItemStation sharedStation] allWeatherItems] count];
+//    return [[[HHWeatherItemStation sharedStation] allWeatherItems] count];
+    return [[[HHWeatherItemStation sharedStation] allWeatherGroups] count];
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -133,23 +154,23 @@
     }
 
     // TODO: Configure the content of the cell
-    NSArray *allWeatherItems = [[HHWeatherItemStation sharedStation] allWeatherItems];
-    HHWeatherItem *item = [allWeatherItems objectAtIndex:[indexPath row]];
+//    NSArray *allWeatherItems = [[HHWeatherItemStation sharedStation] allWeatherItems];
+//    HHWeatherItem *item = [allWeatherItems objectAtIndex:[indexPath row]];
     
-    // City name
-    cell.cityNameLabel.text = item.cityName;
-
-    
-    // Weather image
-    NSString *imageName = [NSString stringWithFormat:@"%@", item.weather];
-    cell.weatherImageView.image = [UIImage imageNamed:imageName];
-    
-    // Temperature
-    cell.tempLabel.text = item.temperature;
-
-    // Get the color pallete, then configure the backgroundColor of cells in accordance with weather
-    HHWeatherColor *colorPallete = [HHWeatherColor sharedColorPalette];
-    cell.backgroundColor = [colorPallete colorForWeather:item.weather];
+//    // City name
+//    cell.cityNameLabel.text = item.cityName;
+//
+//    
+//    // Weather image
+//    NSString *imageName = [NSString stringWithFormat:@"%@", item.weather];
+//    cell.weatherImageView.image = [UIImage imageNamed:imageName];
+//    
+//    // Temperature
+//    cell.tempLabel.text = item.temperature;
+//
+//    // Get the color pallete, then configure the backgroundColor of cells in accordance with weather
+//    HHWeatherColor *colorPallete = [HHWeatherColor sharedColorPalette];
+//    cell.backgroundColor = [colorPallete colorForWeather:item.weather];
     
     return cell;
 }

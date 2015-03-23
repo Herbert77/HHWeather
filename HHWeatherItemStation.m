@@ -8,10 +8,11 @@
 
 #import "HHWeatherItemStation.h"
 #import "HHWeatherItem.h"
+#import "HHWeatherGroup.h"
 
 @interface HHWeatherItemStation ()
 
-@property (nonatomic) NSMutableArray *allPrivateWeatherItems;
+@property (nonatomic) NSMutableDictionary *allPrivateWeatherGroups;
 
 @end
 
@@ -44,41 +45,56 @@
     
     if (self) {
         
-        _allPrivateWeatherItems = [[NSMutableArray alloc] init];
+        _allPrivateWeatherGroups = [[NSMutableDictionary alloc] init];
     }
     
     return self;
 }
 
-- (NSArray *) allWeatherItems {
+- (void) addWeatherGroup:(HHWeatherGroup *)weatherGroup forCity:(NSString *)cityName {
     
-    return self.allPrivateWeatherItems;
+    [self.allPrivateWeatherGroups setObject:weatherGroup forKey:cityName];
 }
 
-- (HHWeatherItem *) createdItemForCity:(NSString *)cityName {
-    
-    HHWeatherItem *item = [[HHWeatherItem alloc] initWithCityName:cityName weather:@"Snow" temperature:@"-3°" wind:@"gale" humidity:@"65%"];
-    
-    [self.allPrivateWeatherItems addObject:item];
-    
-    return item;
+- (void) removeWeatherGroupForCity:(NSString *)cityName {
+
+    [self.allPrivateWeatherGroups removeObjectForKey:cityName];
 }
 
-- (void) removeItem:(HHWeatherItem *)weatherItem {
+- (NSMutableDictionary *) allWeatherGroups {
     
-    [self.allPrivateWeatherItems removeObject:weatherItem];
+    return self.allPrivateWeatherGroups;
 }
+
+//- (NSArray *) allWeatherItems {
+//    
+//    return self.allPrivateWeatherItems;
+//}
+
+//- (HHWeatherItem *) createdItemForCity:(NSString *)cityName {
+//    
+//    HHWeatherItem *item = [[HHWeatherItem alloc] initWithCityName:cityName weather:@"Snow" temperature:@"-3°" wind:@"gale" humidity:@"65%" pmValue:77];
+//    
+//    [self.allPrivateWeatherItems addObject:item];
+//    
+//    return item;
+//}
+
+//- (void) removeItem:(HHWeatherItem *)weatherItem {
+//    
+//    [self.allPrivateWeatherItems removeObject:weatherItem];
+//}
 
 // Provides the temp weather info data
-- (void) getTempWeatherDataForTest {
-    
-    HHWeatherItem *item_1 = [[HHWeatherItem alloc] initWithCityName:@"WuHan" weather:@"Sunny" temperature:@"25°" wind:@"Breeze" humidity:@"37%"];
-    HHWeatherItem *item_2 = [[HHWeatherItem alloc] initWithCityName:@"ShangHai" weather:@"Rain" temperature:@"11°" wind:@"gale" humidity:@"87%"];
-    HHWeatherItem *item_3 = [[HHWeatherItem alloc] initWithCityName:@"ChongQing" weather:@"Sizzler" temperature:@"38°" wind:@"windless" humidity:@"13%"];
-    
-    [self.allPrivateWeatherItems addObjectsFromArray:@[item_1, item_2, item_3]];
-    
-}
+//- (void) getTempWeatherDataForTest {
+//    
+//    HHWeatherItem *item_1 = [[HHWeatherItem alloc] initWithCityName:@"WuHan" weather:@"Sunny" temperature:@"25°" wind:@"Breeze" humidity:@"37%" pmValue:34];
+//    HHWeatherItem *item_2 = [[HHWeatherItem alloc] initWithCityName:@"ShangHai" weather:@"Rain" temperature:@"11°" wind:@"gale" humidity:@"87%" pmValue:45];
+//    HHWeatherItem *item_3 = [[HHWeatherItem alloc] initWithCityName:@"ChongQing" weather:@"Sizzler" temperature:@"38°" wind:@"windless" humidity:@"13%" pmValue:19];
+//    
+//    [self.allPrivateWeatherItems addObjectsFromArray:@[item_1, item_2, item_3]];
+//    
+//}
 
 
 @end

@@ -18,12 +18,20 @@
 		E5293E6C1AA03F1100017658 /* HHWeatherItemStation.m in Sources */ = {isa = PBXBuildFile; fileRef = E5293E6B1AA03F1100017658 /* HHWeatherItemStation.m */; };
 		E562CE151AB3D2F8001EEE1D /* HHDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E562CE141AB3D2F8001EEE1D /* HHDetailViewController.m */; };
 		E562CE181AB3D31F001EEE1D /* HHWeatherButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E562CE171AB3D31F001EEE1D /* HHWeatherButton.m */; };
+		E56733F61AB52E2D007E0183 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E56733F51AB52E2D007E0183 /* libc++.dylib */; };
+		E56733FC1AB52E58007E0183 /* JuheApisSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E56733FB1AB52E58007E0183 /* JuheApisSDK.a */; };
+		E56733FE1AB52ECD007E0183 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E56733FD1AB52ECD007E0183 /* CoreTelephony.framework */; };
+		E56734001AB52ED7007E0183 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E56733FF1AB52ED7007E0183 /* AdSupport.framework */; };
+		E56734021AB52EE3007E0183 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E56734011AB52EE3007E0183 /* CoreLocation.framework */; };
 		E56EEF071AA56A670019CCF7 /* CustomMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E56EEF041AA56A670019CCF7 /* CustomMenuCell.m */; };
 		E56EEF081AA56A670019CCF7 /* PulldownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E56EEF061AA56A670019CCF7 /* PulldownMenu.m */; };
 		E56EEF0D1AA56C230019CCF7 /* HHProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E56EEF0B1AA56C230019CCF7 /* HHProfileViewController.m */; };
 		E56EEF0E1AA56C230019CCF7 /* HHProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E56EEF0C1AA56C230019CCF7 /* HHProfileViewController.xib */; };
 		E58B88A91AA7EB3500A6BC60 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E58B88A81AA7EB3500A6BC60 /* MessageUI.framework */; };
+		E5A799AE1ABAA10B007D50D8 /* HHWeatherGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A799AD1ABAA10B007D50D8 /* HHWeatherGroup.m */; };
+		E5A799B11ABAA38D007D50D8 /* HHDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A799B01ABAA38D007D50D8 /* HHDataManager.m */; };
 		E5C221E01AA2C25900B3BD23 /* HHWeatherColor.m in Sources */ = {isa = PBXBuildFile; fileRef = E5C221DF1AA2C25900B3BD23 /* HHWeatherColor.m */; };
+		E5D06E971AB9321A00AE7526 /* libobjc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E5D06E961AB9321A00AE7526 /* libobjc.dylib */; };
 		E5FC08121A9DDD660012B6CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FC08111A9DDD660012B6CC /* main.m */; };
 		E5FC08151A9DDD660012B6CC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FC08141A9DDD660012B6CC /* AppDelegate.m */; };
 		E5FC081D1A9DDD660012B6CC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5FC081C1A9DDD660012B6CC /* Images.xcassets */; };
@@ -64,6 +72,13 @@
 		E562CE141AB3D2F8001EEE1D /* HHDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHDetailViewController.m; sourceTree = "<group>"; };
 		E562CE161AB3D31F001EEE1D /* HHWeatherButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HHWeatherButton.h; sourceTree = "<group>"; };
 		E562CE171AB3D31F001EEE1D /* HHWeatherButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHWeatherButton.m; sourceTree = "<group>"; };
+		E56733F51AB52E2D007E0183 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		E56733F91AB52E58007E0183 /* JHAPISDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHAPISDK.h; sourceTree = "<group>"; };
+		E56733FA1AB52E58007E0183 /* JHOpenidSupplier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHOpenidSupplier.h; sourceTree = "<group>"; };
+		E56733FB1AB52E58007E0183 /* JuheApisSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = JuheApisSDK.a; sourceTree = "<group>"; };
+		E56733FD1AB52ECD007E0183 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		E56733FF1AB52ED7007E0183 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		E56734011AB52EE3007E0183 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		E56EEF031AA56A670019CCF7 /* CustomMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomMenuCell.h; sourceTree = "<group>"; };
 		E56EEF041AA56A670019CCF7 /* CustomMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomMenuCell.m; sourceTree = "<group>"; };
 		E56EEF051AA56A670019CCF7 /* PulldownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PulldownMenu.h; sourceTree = "<group>"; };
@@ -72,8 +87,13 @@
 		E56EEF0B1AA56C230019CCF7 /* HHProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHProfileViewController.m; sourceTree = "<group>"; };
 		E56EEF0C1AA56C230019CCF7 /* HHProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HHProfileViewController.xib; sourceTree = "<group>"; };
 		E58B88A81AA7EB3500A6BC60 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		E5A799AC1ABAA10B007D50D8 /* HHWeatherGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HHWeatherGroup.h; sourceTree = "<group>"; };
+		E5A799AD1ABAA10B007D50D8 /* HHWeatherGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHWeatherGroup.m; sourceTree = "<group>"; };
+		E5A799AF1ABAA38D007D50D8 /* HHDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HHDataManager.h; sourceTree = "<group>"; };
+		E5A799B01ABAA38D007D50D8 /* HHDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHDataManager.m; sourceTree = "<group>"; };
 		E5C221DE1AA2C25900B3BD23 /* HHWeatherColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HHWeatherColor.h; sourceTree = "<group>"; };
 		E5C221DF1AA2C25900B3BD23 /* HHWeatherColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHWeatherColor.m; sourceTree = "<group>"; };
+		E5D06E961AB9321A00AE7526 /* libobjc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libobjc.dylib; path = usr/lib/libobjc.dylib; sourceTree = SDKROOT; };
 		E5FC080C1A9DDD660012B6CC /* HHWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HHWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5FC08101A9DDD660012B6CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E5FC08111A9DDD660012B6CC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -97,8 +117,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5D06E971AB9321A00AE7526 /* libobjc.dylib in Frameworks */,
+				E56734021AB52EE3007E0183 /* CoreLocation.framework in Frameworks */,
+				E56734001AB52ED7007E0183 /* AdSupport.framework in Frameworks */,
+				E56733FE1AB52ECD007E0183 /* CoreTelephony.framework in Frameworks */,
+				E56733F61AB52E2D007E0183 /* libc++.dylib in Frameworks */,
 				E58B88A91AA7EB3500A6BC60 /* MessageUI.framework in Frameworks */,
 				15F483B5E98FFFE016FBDDA4 /* libPods.a in Frameworks */,
+				E56733FC1AB52E58007E0183 /* JuheApisSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,6 +141,11 @@
 		255972935C4EA6C8119344B4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E5D06E961AB9321A00AE7526 /* libobjc.dylib */,
+				E56734011AB52EE3007E0183 /* CoreLocation.framework */,
+				E56733FF1AB52ED7007E0183 /* AdSupport.framework */,
+				E56733FD1AB52ECD007E0183 /* CoreTelephony.framework */,
+				E56733F51AB52E2D007E0183 /* libc++.dylib */,
 				E58B88A81AA7EB3500A6BC60 /* MessageUI.framework */,
 				7FC67DEB84D6847DFDECC3DA /* libPods.a */,
 			);
@@ -154,6 +185,23 @@
 			name = Home;
 			sourceTree = "<group>";
 		};
+		E56733F71AB52E58007E0183 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				E56733F81AB52E58007E0183 /* JuheApisSDK */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		E56733F81AB52E58007E0183 /* JuheApisSDK */ = {
+			isa = PBXGroup;
+			children = (
+				E56733F91AB52E58007E0183 /* JHAPISDK.h */,
+				E56733FA1AB52E58007E0183 /* JHOpenidSupplier.h */,
+			);
+			path = JuheApisSDK;
+			sourceTree = "<group>";
+		};
 		E56EEF021AA56A220019CCF7 /* PullDownMenu */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +238,8 @@
 		E5FC08031A9DDD660012B6CC = {
 			isa = PBXGroup;
 			children = (
+				E56733F71AB52E58007E0183 /* include */,
+				E56733FB1AB52E58007E0183 /* JuheApisSDK.a */,
 				E5051DD31AA1D69B00CD88F2 /* TableCell.xib */,
 				E5FC08371A9DE0380012B6CC /* Model */,
 				E5FC08381A9DE0400012B6CC /* Views */,
@@ -265,10 +315,14 @@
 			children = (
 				E5293E671AA0203600017658 /* HHWeatherItem.h */,
 				E5293E681AA0203600017658 /* HHWeatherItem.m */,
+				E5A799AC1ABAA10B007D50D8 /* HHWeatherGroup.h */,
+				E5A799AD1ABAA10B007D50D8 /* HHWeatherGroup.m */,
 				E5293E6A1AA03F1100017658 /* HHWeatherItemStation.h */,
 				E5293E6B1AA03F1100017658 /* HHWeatherItemStation.m */,
 				E5C221DE1AA2C25900B3BD23 /* HHWeatherColor.h */,
 				E5C221DF1AA2C25900B3BD23 /* HHWeatherColor.m */,
+				E5A799AF1ABAA38D007D50D8 /* HHDataManager.h */,
+				E5A799B01ABAA38D007D50D8 /* HHDataManager.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -430,6 +484,8 @@
 				E5051DDC1AA1E22800CD88F2 /* HHResultTableViewController.m in Sources */,
 				E56EEF081AA56A670019CCF7 /* PulldownMenu.m in Sources */,
 				E5FC08151A9DDD660012B6CC /* AppDelegate.m in Sources */,
+				E5A799B11ABAA38D007D50D8 /* HHDataManager.m in Sources */,
+				E5A799AE1ABAA10B007D50D8 /* HHWeatherGroup.m in Sources */,
 				E5FC08121A9DDD660012B6CC /* main.m in Sources */,
 				E5293E691AA0203600017658 /* HHWeatherItem.m in Sources */,
 				E5FC083E1A9DE16B0012B6CC /* HHNavigationController.m in Sources */,
@@ -543,6 +599,10 @@
 				INFOPLIST_FILE = HHWeather/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
@@ -556,6 +616,10 @@
 				INFOPLIST_FILE = HHWeather/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};

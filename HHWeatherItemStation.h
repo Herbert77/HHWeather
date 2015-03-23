@@ -10,16 +10,21 @@
 #import "AFNetworking.h"
 
 @class HHWeatherItem;
+@class HHWeatherGroup;
 
 @interface HHWeatherItemStation : NSObject
 
 // Singleton instance
-@property (nonatomic, readonly) NSArray *allWeatherItems;
+@property (nonatomic, readonly) NSMutableDictionary *allWeatherGroups;
 
 + (instancetype) sharedStation;
 
-- (HHWeatherItem *) createdItemForCity:(NSString *)cityName;
-- (void) removeItem:(HHWeatherItem *)weatherItem;
+- (void) addWeatherGroup:(HHWeatherGroup *)weatherGroup forCity:(NSString *)cityName;
+
+- (void) removeWeatherGroupForCity:(NSString *)cityName;
+
+//- (HHWeatherItem *) createdItemForCity:(NSString *)cityName;
+//- (void) removeItem:(HHWeatherItem *)weatherItem;
 
 // For test
 - (void) getTempWeatherDataForTest;

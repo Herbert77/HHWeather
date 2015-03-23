@@ -11,6 +11,7 @@
 #import "HHHomeViewController.h"
 #import "HHWeatherItemStation.h"
 
+
 @interface AppDelegate ()
 
 @end
@@ -21,9 +22,31 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+//    SWIZZ_IT;
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     HHHomeViewController *homeViewController = [[HHHomeViewController alloc] init];
+    
+    // Through the AFNetworking, check the network
+    AFNetworkReachabilityManager *reachabilityManager = [AFNetworkReachabilityManager sharedManager];
+    [reachabilityManager startMonitoring];
+    
+    [reachabilityManager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        
+        if (status == AFNetworkReachabilityStatusNotReachable) {
+            
+            NSLog(@"The network is not avialible");
+            self.netWorkAvailable = NO;
+            homeViewController.netWorkAvailable = self.netWorkAvailable;
+        }
+        else {
+            
+            NSLog(@"The newwork is ok.");
+            self.netWorkAvailable = YES;
+            homeViewController.netWorkAvailable = self.netWorkAvailable;
+        }
+    }];
     
     HHNavigationController *navigationController = [[HHNavigationController alloc] initWithRootViewController:homeViewController];
     
@@ -36,8 +59,8 @@
     HHWeatherItemStation *weatherItemStation = [HHWeatherItemStation sharedStation];
     
     // Get the temp weather data
-    [weatherItemStation getTempWeatherDataForTest];
-    
+//    [weatherItemStation getTempWeatherDataForTest];
+
     // TODO: Set root view controller for the window
     self.window.rootViewController = navigationController;
     
