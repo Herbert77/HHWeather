@@ -10,4 +10,7 @@
 
 @interface HHDetailViewController : UIViewController
 
+@property (nonatomic, copy) NSString *cityName;
+//@property (nonatomic, copy) NSMutableArray *weatherItems;
+
 @end

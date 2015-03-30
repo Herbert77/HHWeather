@@ -27,5 +27,5 @@
 //- (void) removeItem:(HHWeatherItem *)weatherItem;
 
 // For test
-- (void) getTempWeatherDataForTest;
+//- (void) getTempWeatherDataForTest;
 @end

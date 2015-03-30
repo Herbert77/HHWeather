@@ -8,7 +8,6 @@
 
 #import "HHDataManager.h"
 
-
 #import "JHAPISDK.h"
 #import "JHOpenidSupplier.h"
 
@@ -25,8 +24,10 @@ NSString *const WeatherPath = @"http://v.juhe.cn/weather/index";
 NSString *const WeatherAPI_Id = @"39";
 NSString *const method = @"GET";
 
-@interface HHDataManager ()
+static int count;
+static int countForError;
 
+@interface HHDataManager ()
 
 @end
 
@@ -68,6 +69,21 @@ NSString *const method = @"GET";
 }
 
 /**
+ *  需要请求天气数据的城市属性的增删方法
+ *
+ *  @param cityName 城市名（中文）
+ */
+- (void) addCity:(NSString *)cityName {
+    
+    [self.citys addObject:cityName];
+}
+
+- (void) removeCity:(NSString *)cityName {
+    
+    [self.citys removeObject:cityName];
+}
+
+/**
  *  依据城市名来请求天气数据
  *
  *  @param cityName 城市名（中文）
@@ -87,6 +103,13 @@ NSString *const method = @"GET";
     } Failure:^(NSError *error) {
         
         NSLog(@"error: %@", error.description);
+        
+        countForError++;
+        if (countForError == [[self citys] count]) {
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"OffLine" object:self];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"DataLoaded" object:self];
+        }
     }];
     
     // TODO: Request for PM data
@@ -101,6 +124,8 @@ NSString *const method = @"GET";
         
         NSLog(@"Create the weather data model~");
         [self initializeWeatherModel];
+        
+        [self.tableView reloadData];
         
     } Failure:^(NSError *error) {
         
@@ -156,15 +181,16 @@ NSString *const method = @"GET";
     NSDictionary *afterTomoDic = [futureDic objectForKey:[NSString stringWithFormat:@"day_%@", [self dateFor:@"afterTomorrow"]]];
     
     // Today's
-    HHWeatherItem *todayItem = [[HHWeatherItem alloc] initWithCityName:cityName weather:[todayWeatherDic objectForKey:@"weather"] temperature:[todayWeatherDic objectForKey:@"temperature"] wind:[todayWeatherDic objectForKey:@"wind"] humidity: [skDic objectForKey:@"humidity"] pmValue:[self.pmDic objectForKey:@"PM2.5"]];
+    HHWeatherItem *todayItem = [[HHWeatherItem alloc] initWithCityName:cityName weather:[todayWeatherDic objectForKey:@"weather"] temperature:[todayWeatherDic objectForKey:@"temperature"] currentTemp:[[skDic objectForKey:@"temp"] stringByAppendingString:@"°C"] wind:[todayWeatherDic objectForKey:@"wind"] humidity: [skDic objectForKey:@"humidity"] pmValue:[self.pmDic objectForKey:@"PM2.5"]];
     // Tomorrow's
-    HHWeatherItem *tomoItem = [[HHWeatherItem alloc] initWithCityName:cityName weather:[tomoDic objectForKey:@"weather"] temperature:[tomoDic objectForKey:@"temperature"] wind:[tomoDic objectForKey:@"wind"] humidity:@"" pmValue:@""];
+    HHWeatherItem *tomoItem = [[HHWeatherItem alloc] initWithCityName:cityName weather:[tomoDic objectForKey:@"weather"] temperature:[tomoDic objectForKey:@"temperature"] currentTemp:@"" wind:[tomoDic objectForKey:@"wind"] humidity:@"" pmValue:@""];
     // The day After tomorrow's
-    HHWeatherItem *afterTomoItem = [[HHWeatherItem alloc] initWithCityName:cityName weather:[afterTomoDic objectForKey:@"weather"] temperature:[afterTomoDic objectForKey:@"temperature"] wind:[afterTomoDic objectForKey:@"wind"] humidity:@"" pmValue:@""];
+    HHWeatherItem *afterTomoItem = [[HHWeatherItem alloc] initWithCityName:cityName weather:[afterTomoDic objectForKey:@"weather"] temperature:[afterTomoDic objectForKey:@"temperature"] currentTemp:@"" wind:[afterTomoDic objectForKey:@"wind"] humidity:@"" pmValue:@""];
     
     // 创建一个天气组（以某一个城市为一个组）
     HHWeatherGroup *weatherGroup = [[HHWeatherGroup alloc] init];
     [weatherGroup addWeatherItems:@[todayItem, tomoItem, afterTomoItem]];
+    
     
     // 把该天气组添加到天气中心
     [[HHWeatherItemStation sharedStation] addWeatherGroup:weatherGroup forCity:cityName];
@@ -172,6 +198,17 @@ NSString *const method = @"GET";
     NSLog(@"todayItem: %@", [todayItem description]);
     NSLog(@"tomoItem: %@", [tomoItem description]);
     NSLog(@"afterTomoItem: %@", [afterTomoItem description]);
+    
+    // 记录该方法运行的次数
+    count++;
+    
+    NSLog(@"count: %i", count);
+    
+    // 如果这是该方法最后一次运行
+    if (count == [[self citys] count]) {
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"DataLoaded" object:self];
+    }
     
 }
 

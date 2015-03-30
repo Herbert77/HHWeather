@@ -176,9 +176,13 @@
     NSArray *imageNamesArray = @[@"setting_icon",
                                  @"AboutMe_icon",
                                  @"feedBack_icon"];
-    NSArray *textArray = @[@"Settings",
-                           @"Profile",
-                           @"Feed back"];
+//    NSArray *textArray = @[@"Settings",
+//                           @"Profile",
+//                           @"Feed back"];
+    
+    NSArray *textArray = @[@"设置",
+                           @"关于我",
+                           @"意见反馈"];
     
     [cell.customImageView setImage:[UIImage imageNamed:[imageNamesArray objectAtIndex:indexPath.row]]];
     cell.customLabel.text = [textArray objectAtIndex:indexPath.row];

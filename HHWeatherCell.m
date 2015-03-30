@@ -30,7 +30,7 @@
         [self addSubview:_weatherImageView];
         
         // Configure temperature label
-        _tempLabel = [[UILabel alloc] initWithFrame:CGRectMake(292, 20, 60, 35)];
+        _tempLabel = [[UILabel alloc] initWithFrame:CGRectMake(272, 20, 100, 35)];
         _tempLabel.textColor = [[HHWeatherColor sharedColorPalette] colorForText];
         _tempLabel.font = [UIFont fontWithName:@"Avenir-Light" size:26];
         [self addSubview:_tempLabel];

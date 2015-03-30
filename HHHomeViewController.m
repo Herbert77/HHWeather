@@ -12,17 +12,22 @@
 #import "HHNavigationController.h"
 
 #import "HHWeatherItem.h"
+#import "HHWeatherGroup.h"
 #import "HHWeatherItemStation.h"
 
 #import "HHWeatherColor.h"
 
 #import "HHDetailViewController.h"
 
-#import "AFNetworking.h"
-
 #import "HHDataManager.h"
 
-@interface HHHomeViewController ()
+#import "MONActivityIndicatorView.h"
+
+
+
+@interface HHHomeViewController () <MONActivityIndicatorViewDelegate, UIAlertViewDelegate>
+
+@property (nonatomic) MONActivityIndicatorView *indicatorView;
 
 @end
 
@@ -41,7 +46,8 @@
         UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 44)];
         titleLabel.backgroundColor = [UIColor clearColor];
         titleLabel.font = [UIFont fontWithName:@"AvenirNext-Medium" size:20];
-        titleLabel.text = @" MiniWeather °";
+//        titleLabel.text = @" MiniWeather °";
+        titleLabel.text = @" 迷你天气";
         titleLabel.textColor = [UIColor colorWithRed:236/255.0 green:240/255.0 blue:241/255.0 alpha:1.0];
         
         navItem.titleView = titleLabel;
@@ -63,6 +69,9 @@
         
         // Editing Mode
         
+        
+ 
+
     
     }
     
@@ -91,8 +100,21 @@
 //    }
     
     // TODO:Check the network status
-
     
+    //WithFrame:CGRectMake(250, 350, 100, 50)
+    _indicatorView = [[MONActivityIndicatorView alloc] init];
+    _indicatorView.delegate = self;
+    _indicatorView.numberOfCircles = 5;
+    _indicatorView.radius = 10;
+    _indicatorView.internalSpacing = 3;
+    _indicatorView.duration = 0.7;
+    _indicatorView.delay = 0.10;
+    _indicatorView.center = self.view.center;
+    [self.view addSubview:_indicatorView];
+    [_indicatorView startAnimating];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopAnimating) name:@"DataLoaded" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAlertView) name:@"OffLine" object:nil];
       
     NSLog(@"self.netWorkAvailable %id", self.netWorkAvailable);
     
@@ -103,8 +125,27 @@
 //        [alertView show];
 //    }
     
-    [[HHDataManager sharedDataManager] requestWeatherDataForCity:@"武汉"];
+    [HHDataManager sharedDataManager].tableView = self.tableView;
+    
+    [[HHDataManager sharedDataManager] setCitys:[NSMutableArray arrayWithArray:@[@"武汉", @"北京", @"上海"]]];
+    
+    NSMutableArray *citys = [[HHDataManager sharedDataManager] citys];
+    
+    [[HHDataManager sharedDataManager] requestWeatherDataForCity:citys[0]];
+//    [self performSelector:@selector(requestData:) withObject:citys[0] afterDelay:0.1];
+    [self performSelector:@selector(requestData:) withObject:citys[1] afterDelay:0.5];
+    [self performSelector:@selector(requestData:) withObject:citys[2] afterDelay:0.9];
+    
+    NSLog(@"%@", [[HHDataManager sharedDataManager] citys]);
+    
 
+    
+//    [self.tableView reloadData];
+}
+
+- (void)requestData:(NSString *)cityName {
+    
+    [[HHDataManager sharedDataManager] requestWeatherDataForCity:cityName];
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
@@ -118,6 +159,8 @@
 
     }
 }
+
+
 
 #pragma mark - Action
 - (void) menuButtonTapped:(id)sender {
@@ -137,7 +180,6 @@
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     // TODO: configure numberOfRows
-//    return [[[HHWeatherItemStation sharedStation] allWeatherItems] count];
     return [[[HHWeatherItemStation sharedStation] allWeatherGroups] count];
 }
 
@@ -154,23 +196,29 @@
     }
 
     // TODO: Configure the content of the cell
-//    NSArray *allWeatherItems = [[HHWeatherItemStation sharedStation] allWeatherItems];
-//    HHWeatherItem *item = [allWeatherItems objectAtIndex:[indexPath row]];
+    HHWeatherGroup *weatherGroup = [[[HHWeatherItemStation sharedStation] allWeatherGroups] objectForKey:[[[HHDataManager sharedDataManager] citys] objectAtIndex:indexPath.row]];
     
-//    // City name
-//    cell.cityNameLabel.text = item.cityName;
-//
-//    
+    NSMutableArray *weatherItems = [weatherGroup weatherItems];
+    HHWeatherItem *displayedItem = [weatherItems objectAtIndex:0];
+    
+    NSLog(@"tableView ~~~~~~~~~~");
+
+    // City name
+    cell.cityNameLabel.text = displayedItem.cityName;
+//    // Weather Image
+////    cell.
+    // Current temperature
+    cell.tempLabel.text = displayedItem.currentTemp;
+    
 //    // Weather image
 //    NSString *imageName = [NSString stringWithFormat:@"%@", item.weather];
-//    cell.weatherImageView.image = [UIImage imageNamed:imageName];
-//    
-//    // Temperature
-//    cell.tempLabel.text = item.temperature;
-//
-//    // Get the color pallete, then configure the backgroundColor of cells in accordance with weather
-//    HHWeatherColor *colorPallete = [HHWeatherColor sharedColorPalette];
-//    cell.backgroundColor = [colorPallete colorForWeather:item.weather];
+    cell.weatherImageView.image = [UIImage imageNamed:@"Sunny"];
+
+    // Get the color pallete, then configure the backgroundColor of cells in accordance with weather
+    HHWeatherColor *colorPallete = [HHWeatherColor sharedColorPalette];
+    cell.backgroundColor = [colorPallete colorForWeather:@"Sunny"];
+    
+
     
     return cell;
 }
@@ -187,6 +235,7 @@
         
         // TODO: Delete the weather city from the data Modal
         
+        
         // Delete the cells on the basis of indexPath
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationLeft];
     }
@@ -196,10 +245,50 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     HHDetailViewController *detailViewController = [[HHDetailViewController alloc] init];
-    [self.navigationController presentViewController:detailViewController animated:YES completion:NULL];
     
     // TODO: Deliver the data for detail view
+    detailViewController.cityName = [[[HHDataManager sharedDataManager] citys] objectAtIndex:indexPath.row];
+    NSLog(@"detailViewController.cityName: %@", detailViewController.cityName);
     
+    [self.navigationController presentViewController:detailViewController animated:YES completion:NULL];
+    
+   
+    
+}
+
+#pragma mark - MONActivityIndicatorViewDelegate
+- (UIColor *)activityIndicatorView:(MONActivityIndicatorView *)activityIndicatorView
+      circleBackgroundColorAtIndex:(NSUInteger)index {
+    
+//    CGFloat red   = (arc4random() % 256)/255.0;
+//    CGFloat green = (arc4random() % 256)/255.0;
+//    CGFloat blue  = (arc4random() % 256)/255.0;
+//    CGFloat alpha = 1.0f;
+    UIColor *color = [[HHWeatherColor sharedColorPalette] colorForIndicatorColor:(int)(index+1)];
+    
+    return color;
+}
+
+#pragma mark - Stop Animating
+- (void) stopAnimating {
+    
+    [self.indicatorView stopAnimating];
+}
+
+#pragma mark - OffLine
+- (void) showAlertView {
+    
+    UIAlertView *alertView  = [[UIAlertView alloc] initWithTitle:@"警告" message:@"您的网络未连接，前检查蜂窝网络状况！" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];
+    
+    [alertView show];
+}
+
+
+
+- (void) dealloc {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

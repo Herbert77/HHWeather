@@ -22,4 +22,6 @@
 
 - (UIColor *) colorForText;
 
+- (UIColor *) colorForIndicatorColor:(int)index;
+
 @end

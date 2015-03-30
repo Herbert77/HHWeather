@@ -9,12 +9,20 @@
 #import "HHDetailViewController.h"
 
 #import "HHWeatherButton.h"
+#import "HHWeatherSecButton.h"
+#import "HHWeatherItem.h"
+#import "HHWeatherGroup.h"
+#import "HHWeatherItemStation.h"
+
+NSString *const today = @"今日";
+NSString *const tomorrow = @"明日";
+NSString *const afterTomorrow = @"后日";
 
 @interface HHDetailViewController ()
 
 @property (nonatomic, strong) HHWeatherButton *button_1;
-@property (nonatomic, strong) HHWeatherButton *button_2;
-@property (nonatomic, strong) HHWeatherButton *button_3;
+@property (nonatomic, strong) HHWeatherSecButton *button_2;
+@property (nonatomic, strong) HHWeatherSecButton *button_3;
 
 @property (nonatomic) BOOL firstOpen;
 @property (nonatomic) BOOL secondOpen;
@@ -31,6 +39,7 @@
     
     if (self) {
         
+        self.cityName = [[NSString alloc] init];
     }
     
     return self;
@@ -45,41 +54,56 @@
     [_button_1 addTarget:self action:@selector(firstButtonIsTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_button_1];
     
-    _button_2 = [[HHWeatherButton alloc] initWithFrame:CGRectMake(0, 538, self.view.bounds.size.width, 64.5)];
+    _button_2 = [[HHWeatherSecButton alloc] initWithFrame:CGRectMake(0, 538, self.view.bounds.size.width, 64.5)];
     _button_2.backgroundColor = [UIColor colorWithRed:41/255.0 green:128/255.0 blue:185/255.0 alpha:1.0];
     [_button_2 addTarget:self action:@selector(secondButtonIsTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_button_2];
     
-    _button_3 = [[HHWeatherButton alloc] initWithFrame:CGRectMake(0, 602.5, self.view.bounds.size.width, 64.5)];
+    _button_3 = [[HHWeatherSecButton alloc] initWithFrame:CGRectMake(0, 602.5, self.view.bounds.size.width, 64.5)];
     _button_3.backgroundColor = [UIColor colorWithRed:211/255.0 green:84/255.0 blue:0.0 alpha:1.0];
     [_button_3 addTarget:self action:@selector(thirdButtonIsTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_button_3];
     
+    // Get the weather data for today
+    
+    HHWeatherGroup *weatherGroup = [[[HHWeatherItemStation sharedStation] allWeatherGroups] objectForKey:self.cityName];
+    NSMutableArray *weatherItems = [weatherGroup weatherItems];
+
+    HHWeatherItem *todayItem = [weatherItems objectAtIndex:0];
+    HHWeatherItem *tomorrowItem = [weatherItems objectAtIndex:1];
+    HHWeatherItem *afterTomorrowItem = [weatherItems objectAtIndex:2];
+    
+    NSLog(@"CityName:%@", self.cityName);
+    NSLog(@"%@", weatherItems);
+    NSLog(@"todayItem: %@", [todayItem description]);
+    
     // Configure the weather data
-    _button_1.dayLabel.text = @"Today";
-    _button_1.cityLabel.text = @"WuHan";
+    _button_1.dayLabel.text = today;
+    _button_1.cityLabel.text = self.cityName;
     _button_1.weatherImageView.image = [UIImage imageNamed:@"Sunny"];
-    _button_1.weatherLabel.text = @"Sunshine";
-    _button_1.tempLabel.text = @"16";
-    _button_1.windLabel.text = @"Breeze";
-    _button_1.humidityLabel.text = @"42%";
+    _button_1.weatherLabel.text = [todayItem weather];
+    _button_1.tempLabel.text = [todayItem currentTemp];
+    _button_1.windLabel.text = [todayItem wind];
+    _button_1.humidityLabel.text = [todayItem humidity];
+    _button_1.tempRangeLabel.text = [todayItem temperature];
+    _button_1.pmValueLabel.text = [todayItem pmValue];
     
     
-    _button_2.dayLabel.text = @"Tomorrow";
+    _button_2.dayLabel.text = tomorrow;
     _button_2.cityLabel.text = @"";
     _button_2.weatherImageView.image = [UIImage imageNamed:@"Rain"];
-    _button_2.weatherLabel.text = @"Rain";
-    _button_2.tempLabel.text = @"7";
-    _button_2.windLabel.text = @"Gale";
-    _button_2.humidityLabel.text = @"87%";
+    _button_2.weatherLabel.text = [tomorrowItem weather];
+    _button_2.tempLabel.text = [tomorrowItem temperature];
+    _button_2.windLabel.text = [tomorrowItem wind];
+    _button_2.humidityLabel.text = @"%";
     
-    _button_3.dayLabel.text = @"The Day After Tomorrow";
+    _button_3.dayLabel.text = afterTomorrow;
     _button_3.cityLabel.text = @"";
     _button_3.weatherImageView.image = [UIImage imageNamed:@"Sizzler"];
-    _button_3.weatherLabel.text = @"Sizzler";
-    _button_3.tempLabel.text = @"31";
-    _button_3.windLabel.text = @"Breeze";
-    _button_3.humidityLabel.text = @"21%";
+    _button_3.weatherLabel.text = [afterTomorrowItem weather];
+    _button_3.tempLabel.text = [afterTomorrowItem temperature];
+    _button_3.windLabel.text = [afterTomorrowItem wind];
+    _button_3.humidityLabel.text = @"%";
     
     _firstOpen = YES;
     _secondOpen = NO;
