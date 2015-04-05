@@ -77,7 +77,7 @@
 //        _tempSymbolLabel.contentMode = UIViewContentModeScaleAspectFill;
 //        [self addSubview:_tempSymbolLabel];
         
-        _windSymbolLabel = [[UIImageView alloc] initWithFrame:CGRectMake(94, 389, 67, 25)];
+        _windSymbolLabel = [[UIImageView alloc] initWithFrame:CGRectMake(94, 389, 55, 40)];
         _windSymbolLabel.backgroundColor = [UIColor clearColor];
         _tempSymbolLabel.contentMode = UIViewContentModeScaleAspectFill;
         [self addSubview:_windSymbolLabel];
@@ -89,8 +89,14 @@
         
         // Configure the constant value for private property
 //        _tempSymbolLabel.image = [UIImage imageNamed:@"tempSymbol"];
-        _windSymbolLabel.image = [UIImage imageNamed:@"windSymbol"];
+        _windSymbolLabel.image = [UIImage imageNamed:@"windy"];
 //        _humiditySymbolLabel.image = [UIImage imageNamed:@"humiditySymbol"];
+        
+        // 三个 button 切换之间的区分线
+        _indicatorLine = [[UIView alloc] initWithFrame:CGRectMake(22, 0, self.bounds.size.width - 22, 0.9)];
+        _indicatorLine.backgroundColor = [UIColor whiteColor];
+        _indicatorLine.alpha = 0.35;
+        [self addSubview:_indicatorLine];
     }
     
     return self;

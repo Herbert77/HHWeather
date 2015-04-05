@@ -18,4 +18,6 @@
 @property (nonatomic, strong) UILabel     *windLabel;
 @property (nonatomic, strong) UILabel     *humidityLabel;
 
+@property (nonatomic, strong) UIView      *indicatorLine;
+
 @end

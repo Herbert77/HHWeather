@@ -8,6 +8,6 @@
 
 #import "HHBaseTableViewController.h"
 
-@interface HHMainTableViewController : HHBaseTableViewController
+@interface HHMainTableViewController : UIViewController
 
 @end

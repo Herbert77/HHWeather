@@ -23,4 +23,5 @@
 @property (nonatomic, strong) UILabel     *tempRangeLabel;
 @property (nonatomic, strong) UILabel     *pmValueLabel;
 
+
 @end

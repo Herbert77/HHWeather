@@ -53,7 +53,7 @@
         _weatherLabel.textColor = TEXTCOLOR;
         [self addSubview:_weatherLabel];
         
-        _tempLabel = [[UILabel alloc] initWithFrame:CGRectMake(120, 285, 135, 69)];
+        _tempLabel = [[UILabel alloc] initWithFrame:CGRectMake(120, 270, 135, 69)];
         _tempLabel.font = [UIFont fontWithName:@"AvenirNext-UltraLight" size:55];
         _tempLabel.textAlignment = NSTextAlignmentCenter;
         _tempLabel.textColor = TEXTCOLOR;
@@ -65,7 +65,7 @@
         _windLabel.textColor = TEXTCOLOR;
         [self addSubview:_windLabel];
         
-        _humidityLabel = [[UILabel alloc] initWithFrame:CGRectMake(160, 469, 160, 30)];
+        _humidityLabel = [[UILabel alloc] initWithFrame:CGRectMake(160, 469 + 15, 160, 30)];
         _humidityLabel.font = [UIFont fontWithName:@"AvenirNext-Regular" size:20];
         _humidityLabel.textAlignment = NSTextAlignmentCenter;
         _humidityLabel.textColor = TEXTCOLOR;
@@ -74,7 +74,7 @@
         
         // Additional instance of property
         _tempRangeLabel = [[UILabel alloc] initWithFrame:CGRectMake(95, 362, 184, 45)];
-        _tempRangeLabel.font = [UIFont fontWithName:@"AvenirNext-UltraLight" size:27];
+        _tempRangeLabel.font = [UIFont fontWithName:@"Avenir-Light" size:27];
         _tempRangeLabel.textAlignment = NSTextAlignmentCenter;
         _tempRangeLabel.textColor = TEXTCOLOR;
         [self addSubview:_tempRangeLabel];
@@ -91,14 +91,14 @@
 //        _tempSymbolLabel.contentMode = UIViewContentModeScaleAspectFill;
 //        [self addSubview:_tempSymbolLabel];
         
-        _windSymbolLabel = [[UIImageView alloc] initWithFrame:CGRectMake(94, 389+35, 67, 25)];
+        _windSymbolLabel = [[UIImageView alloc] initWithFrame:CGRectMake(94, 389+28, 55, 40)];
         _windSymbolLabel.backgroundColor = [UIColor clearColor];
-        _tempSymbolLabel.contentMode = UIViewContentModeScaleAspectFill;
+        _tempSymbolLabel.contentMode = UIViewContentModeScaleAspectFit;
         [self addSubview:_windSymbolLabel];
         
-        _humiditySymbolLabel = [[UIImageView alloc] initWithFrame:CGRectMake(120, 474, 14, 19)];
+        _humiditySymbolLabel = [[UIImageView alloc] initWithFrame:CGRectMake(120, 474 + 15, 14, 19)];
         _humiditySymbolLabel.backgroundColor = [UIColor clearColor];
-        _humiditySymbolLabel.contentMode = UIViewContentModeScaleAspectFill;
+        _humiditySymbolLabel.contentMode = UIViewContentModeScaleAspectFit;
         [self addSubview:_humiditySymbolLabel];
         
         _pmValueSymbolLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 63, 68, 30)];
@@ -110,8 +110,9 @@
         
         // Configure the constant value for private property
 //        _tempSymbolLabel.image = [UIImage imageNamed:@"tempSymbol"];
-        _windSymbolLabel.image = [UIImage imageNamed:@"windSymbol"];
+        _windSymbolLabel.image = [UIImage imageNamed:@"windy"];
         _humiditySymbolLabel.image = [UIImage imageNamed:@"humiditySymbol"];
+        
     }
     
     return self;

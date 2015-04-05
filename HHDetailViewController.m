@@ -14,6 +14,9 @@
 #import "HHWeatherGroup.h"
 #import "HHWeatherItemStation.h"
 
+#import "HHDataManager.h"
+#import "HHWeatherColor.h"
+
 NSString *const today = @"今日";
 NSString *const tomorrow = @"明日";
 NSString *const afterTomorrow = @"后日";
@@ -73,6 +76,17 @@ NSString *const afterTomorrow = @"后日";
     HHWeatherItem *tomorrowItem = [weatherItems objectAtIndex:1];
     HHWeatherItem *afterTomorrowItem = [weatherItems objectAtIndex:2];
     
+    // Background color for three buttons
+    NSString *todayWeatherType = [[HHDataManager sharedDataManager] typeForWeather:[todayItem weather]];
+    _button_1.backgroundColor = [[HHWeatherColor sharedColorPalette] colorForWeather:todayWeatherType];
+    
+    NSString *tomorrowWeatherType = [[HHDataManager sharedDataManager] typeForWeather:[tomorrowItem weather]];
+    _button_2.backgroundColor = [[HHWeatherColor sharedColorPalette] colorForWeather:tomorrowWeatherType];
+    
+    NSString *afterTomorrowWeatherType = [[HHDataManager sharedDataManager] typeForWeather:[afterTomorrowItem weather]];
+    _button_3.backgroundColor = [[HHWeatherColor sharedColorPalette] colorForWeather:afterTomorrowWeatherType];
+    
+    
     NSLog(@"CityName:%@", self.cityName);
     NSLog(@"%@", weatherItems);
     NSLog(@"todayItem: %@", [todayItem description]);
@@ -80,7 +94,7 @@ NSString *const afterTomorrow = @"后日";
     // Configure the weather data
     _button_1.dayLabel.text = today;
     _button_1.cityLabel.text = self.cityName;
-    _button_1.weatherImageView.image = [UIImage imageNamed:@"Sunny"];
+    _button_1.weatherImageView.image = [UIImage imageNamed:[[HHDataManager sharedDataManager] typeForWeather:todayItem.weather]];
     _button_1.weatherLabel.text = [todayItem weather];
     _button_1.tempLabel.text = [todayItem currentTemp];
     _button_1.windLabel.text = [todayItem wind];
@@ -91,7 +105,7 @@ NSString *const afterTomorrow = @"后日";
     
     _button_2.dayLabel.text = tomorrow;
     _button_2.cityLabel.text = @"";
-    _button_2.weatherImageView.image = [UIImage imageNamed:@"Rain"];
+    _button_2.weatherImageView.image = [UIImage imageNamed:[[HHDataManager sharedDataManager] typeForWeather:tomorrowItem.weather]];
     _button_2.weatherLabel.text = [tomorrowItem weather];
     _button_2.tempLabel.text = [tomorrowItem temperature];
     _button_2.windLabel.text = [tomorrowItem wind];
@@ -99,7 +113,7 @@ NSString *const afterTomorrow = @"后日";
     
     _button_3.dayLabel.text = afterTomorrow;
     _button_3.cityLabel.text = @"";
-    _button_3.weatherImageView.image = [UIImage imageNamed:@"Sizzler"];
+    _button_3.weatherImageView.image = [UIImage imageNamed:[[HHDataManager sharedDataManager] typeForWeather:afterTomorrowItem.weather]];
     _button_3.weatherLabel.text = [afterTomorrowItem weather];
     _button_3.tempLabel.text = [afterTomorrowItem temperature];
     _button_3.windLabel.text = [afterTomorrowItem wind];
@@ -128,6 +142,10 @@ NSString *const afterTomorrow = @"后日";
         // 放大 button_1
         [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:5.0 initialSpringVelocity:0.0 options:UIViewAnimationOptionCurveEaseInOut|UIViewAnimationOptionBeginFromCurrentState animations:^{
             self.button_1.frame = CGRectMake(0, 0, self.view.bounds.size.width, 538);
+            self.button_1.dayLabel.alpha = 1.0;
+            self.button_2.dayLabel.alpha = 0.5;
+            self.button_3.dayLabel.alpha = 0.5;
+            
         } completion:NULL];
         
         if (self.secondOpen) {
@@ -165,6 +183,10 @@ NSString *const afterTomorrow = @"后日";
         // 放大 button_2
         [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:5.0 initialSpringVelocity:0.0 options:UIViewAnimationOptionCurveEaseInOut|UIViewAnimationOptionBeginFromCurrentState animations:^{
             self.button_2.frame = CGRectMake(0, 64.5, self.view.bounds.size.width, 538);
+            self.button_1.dayLabel.alpha = 0.5;
+            self.button_2.dayLabel.alpha = 1;
+            self.button_3.dayLabel.alpha = 0.5;
+
         } completion:NULL];
         
         if (self.firstOpen) {
@@ -200,6 +222,10 @@ NSString *const afterTomorrow = @"后日";
         // 放大 button_3
         [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:5.0 initialSpringVelocity:0.0 options:UIViewAnimationOptionCurveEaseInOut|UIViewAnimationOptionBeginFromCurrentState animations:^{
             self.button_3.frame = CGRectMake(0, 64.5*2, self.view.bounds.size.width, 538);
+            self.button_1.dayLabel.alpha = 0.5;
+            self.button_2.dayLabel.alpha = 0.5;
+            self.button_3.dayLabel.alpha = 1;
+
         } completion:NULL];
         
         if (self.firstOpen) {

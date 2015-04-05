@@ -8,6 +8,6 @@
 
 #import "HHBaseTableViewController.h"
 
-@interface HHResultTableViewController : HHBaseTableViewController
+@interface HHResultTableViewController : HHBaseTableViewController <UISearchResultsUpdating>
 
 @end

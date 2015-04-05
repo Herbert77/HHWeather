@@ -48,4 +48,13 @@
 
 - (void) initializeWeatherModel;
 
+/**
+ *  依据天气字符串，判断当前天气类型
+ *
+ *  @param string 天气字符串
+ *
+ *  @return 天气图标名
+ */
+- (NSString *) typeForWeather:(NSString *)string;
+
 @end

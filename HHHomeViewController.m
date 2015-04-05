@@ -69,10 +69,6 @@
         
         // Editing Mode
         
-        
- 
-
-    
     }
     
     return self;
@@ -127,16 +123,18 @@
     
     [HHDataManager sharedDataManager].tableView = self.tableView;
     
-    [[HHDataManager sharedDataManager] setCitys:[NSMutableArray arrayWithArray:@[@"武汉", @"北京", @"上海"]]];
+    [[HHDataManager sharedDataManager] setCitys:[NSMutableArray arrayWithArray:@[@"武汉", @"北京", @"上海", @"广州"]]];
     
+
     NSMutableArray *citys = [[HHDataManager sharedDataManager] citys];
     
     [[HHDataManager sharedDataManager] requestWeatherDataForCity:citys[0]];
 //    [self performSelector:@selector(requestData:) withObject:citys[0] afterDelay:0.1];
     [self performSelector:@selector(requestData:) withObject:citys[1] afterDelay:0.5];
     [self performSelector:@selector(requestData:) withObject:citys[2] afterDelay:0.9];
+    [self performSelector:@selector(requestData:) withObject:citys[3] afterDelay:1.3];
     
-    NSLog(@"%@", [[HHDataManager sharedDataManager] citys]);
+    NSLog(@"%@", [[[HHDataManager sharedDataManager] citys] objectAtIndex:3]);
     
 
     
@@ -172,7 +170,8 @@
 - (void) addButtonTapped:(id)sender {
     
     // TODO: addButtonTapped:
-    HHMainTableViewController *mainTableViewController = [[HHMainTableViewController alloc] initWithStyle:UITableViewStylePlain];
+//    HHMainTableViewController *mainTableViewController = [[HHMainTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    HHMainTableViewController *mainTableViewController = [[HHMainTableViewController alloc] init];
     [self.navigationController pushViewController:mainTableViewController animated:YES];
 }
 
@@ -212,11 +211,14 @@
     
 //    // Weather image
 //    NSString *imageName = [NSString stringWithFormat:@"%@", item.weather];
-    cell.weatherImageView.image = [UIImage imageNamed:@"Sunny"];
+    NSString *weatherType = [[HHDataManager sharedDataManager] typeForWeather:[displayedItem weather]];
+    cell.weatherImageView.image = [UIImage imageNamed:weatherType];
+    
+    NSLog(@"%@", [[HHDataManager sharedDataManager] typeForWeather:[displayedItem weather]]);
 
     // Get the color pallete, then configure the backgroundColor of cells in accordance with weather
     HHWeatherColor *colorPallete = [HHWeatherColor sharedColorPalette];
-    cell.backgroundColor = [colorPallete colorForWeather:@"Sunny"];
+    cell.backgroundColor = [colorPallete colorForWeather:weatherType];
     
 
     

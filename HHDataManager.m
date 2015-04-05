@@ -212,4 +212,72 @@ static int countForError;
     
 }
 
+- (NSString *) typeForWeather:(NSString *)string {
+    
+    if (string) {
+        
+        NSLog(@"String: %@", string);
+        
+        NSRange rangeForRain = [string rangeOfString:@"雨"];
+        
+//        NSLog(@"range.location: %lu \nrange.length%lu", (unsigned long)range.location, (unsigned long)range.length);
+        
+        if (rangeForRain.length == 1) {
+            
+            NSRange rangeForThunderStorm = [string rangeOfString:@"雷阵"];
+            if (rangeForThunderStorm.length == 2) {
+                
+                return @"thunderStorm";
+            } else {
+                
+                return @"rainy";
+            }
+        }
+        
+        NSRange rangeForSnow = [string rangeOfString:@"雪"];
+        
+        if (rangeForSnow.length == 1) {
+            return @"snow";
+        }
+        
+        NSRange rangeForHail = [string rangeOfString:@"冰雹"];
+        
+        if (rangeForHail.length == 2) {
+            return @"hail";
+        }
+        
+        NSRange rangeForFrost = [string rangeOfString:@"霜冻"];
+        if (rangeForFrost.length == 2) {
+            return @"frost";
+        }
+
+        NSRange rangeForFoggy = [string rangeOfString:@"雾"];
+        if (rangeForFoggy.length == 1) {
+            return @"foggy";
+        }
+        
+        NSRange rangeForCloudy = [string rangeOfString:@"多云"];
+        if (rangeForCloudy.length == 2) {
+            return @"cloudy";
+        }
+        
+        NSRange rangeForSunny = [string rangeOfString:@"晴"];
+        if (rangeForSunny.length == 1) {
+            return @"sunny";
+        }
+        
+        NSRange rangeForCloudySky = [string rangeOfString:@"阴"];
+        if (rangeForCloudySky.length == 1) {
+            return @"overcastSkyColor";
+        }
+        
+        
+        
+    }
+    
+        
+    return nil;
+    
+}
+
 @end
