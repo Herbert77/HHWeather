@@ -33,7 +33,7 @@
     if (self) {
         
         // Configure the image view
-        _customImageView = [[UIImageView alloc] initWithFrame:CGRectMake(40, 10, 30, 30)];
+        _customImageView = [[UIImageView alloc] initWithFrame:CGRectMake(45, 13, 25, 25)];
         _customImageView.backgroundColor = [UIColor clearColor];
         _customImageView.contentMode = UIViewContentModeScaleAspectFit;
         [self addSubview:_customImageView];

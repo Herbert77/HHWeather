@@ -8,7 +8,6 @@
 
 #import "HHHomeViewController.h"
 #import "HHWeatherCell.h"
-#import "HHMainTableViewController.h"
 #import "HHNavigationController.h"
 
 #import "HHWeatherItem.h"
@@ -22,6 +21,8 @@
 #import "HHDataManager.h"
 
 #import "MONActivityIndicatorView.h"
+
+#import "HHSearchBarEmbeddedInNavigationBarViewController.h"
 
 
 
@@ -69,34 +70,49 @@
         
         // Editing Mode
         
+
     }
     
     return self;
 }
 
-- (instancetype) initWithStyle:(UITableViewStyle)style {
+
+//- (void) searchInCitiesListForString:(NSString *)textFieldString {
+//    
+//    
+//    NSArray *array = [[HHWeatherItemStation sharedStation] cityList];
+//    
+//    for (int i = 0; i < [array count]; i++) {
+//        
+//        if ([array[i] isEqualToString:textFieldString]) {
+//            NSLog(@"There is matching string. %i", i);
+//            break;
+//        }
+//    }
+//}
+
+-(void) viewWillAppear:(BOOL)animated {
     
-    return [self init];
+    [[HHDataManager sharedDataManager] printRequestedCities];
+    
+    [[HHDataManager sharedDataManager] printAddedRequestedCities];
+    
+    // 更新天气数据
+    [[HHDataManager sharedDataManager] refreshWeatherData_2: [[HHDataManager sharedDataManager] addedRequestedCities]];
+    
 }
+
+//- (void)requestData:(NSString *)cityName {
+//    
+//    [[HHDataManager sharedDataManager] requestWeatherDataForCity:cityName];
+//}
 
 #pragma mark - View life cycle
 - (void) viewDidLoad {
     
     [super viewDidLoad];
     
-    // TODO:search the font
-//    for (NSString *familyName in [UIFont familyNames]) {
-//
-//        NSLog(@"%@", familyName);
-//        
-//        for (NSString *font in [UIFont fontNamesForFamilyName:familyName]) {
-//            
-//            NSLog(@"%@", font);
-//        }
-//    }
-    
-    // TODO:Check the network status
-    
+
     //WithFrame:CGRectMake(250, 350, 100, 50)
     _indicatorView = [[MONActivityIndicatorView alloc] init];
     _indicatorView.delegate = self;
@@ -109,42 +125,31 @@
     [self.view addSubview:_indicatorView];
     [_indicatorView startAnimating];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startAnimating) name:@"StartAnimating" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopAnimating) name:@"DataLoaded" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAlertView) name:@"OffLine" object:nil];
-      
+    
+    // TODO:Check the network status
     NSLog(@"self.netWorkAvailable %id", self.netWorkAvailable);
     
-//    if (!self.netWorkAvailable) {
-//        
-//        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Notice" message:@"The netWork is not available." delegate:self cancelButtonTitle:@"done" otherButtonTitles: nil];
-//        
-//        [alertView show];
-//    }
     
     [HHDataManager sharedDataManager].tableView = self.tableView;
     
-    [[HHDataManager sharedDataManager] setCitys:[NSMutableArray arrayWithArray:@[@"武汉", @"北京", @"上海", @"广州"]]];
+    
+    
+    //@"武汉", @"衡水", @"广州", @"西安", @"重庆" @[@"武汉", @"呼和浩特",@"上海"]
+    [[HHDataManager sharedDataManager] setRequestedCities:[NSMutableArray arrayWithArray:@[@"武汉"]]];
     
 
-    NSMutableArray *citys = [[HHDataManager sharedDataManager] citys];
+    NSMutableArray *citys = [[HHDataManager sharedDataManager] requestedCities];
     
-    [[HHDataManager sharedDataManager] requestWeatherDataForCity:citys[0]];
-//    [self performSelector:@selector(requestData:) withObject:citys[0] afterDelay:0.1];
-    [self performSelector:@selector(requestData:) withObject:citys[1] afterDelay:0.5];
-    [self performSelector:@selector(requestData:) withObject:citys[2] afterDelay:0.9];
-    [self performSelector:@selector(requestData:) withObject:citys[3] afterDelay:1.3];
+    [[HHDataManager sharedDataManager] refreshWeatherData:citys];
     
-    NSLog(@"%@", [[[HHDataManager sharedDataManager] citys] objectAtIndex:3]);
+    [[HHWeatherItemStation sharedStation] requestAllAvailableCitys];
     
-
-    
-//    [self.tableView reloadData];
 }
 
-- (void)requestData:(NSString *)cityName {
-    
-    [[HHDataManager sharedDataManager] requestWeatherDataForCity:cityName];
-}
+
 
 - (void) viewWillDisappear:(BOOL)animated {
     
@@ -170,9 +175,14 @@
 - (void) addButtonTapped:(id)sender {
     
     // TODO: addButtonTapped:
-//    HHMainTableViewController *mainTableViewController = [[HHMainTableViewController alloc] initWithStyle:UITableViewStylePlain];
-    HHMainTableViewController *mainTableViewController = [[HHMainTableViewController alloc] init];
-    [self.navigationController pushViewController:mainTableViewController animated:YES];
+
+//    HHMainTableViewController *mainTableViewController = [[HHMainTableViewController alloc] init];
+//    [self.navigationController pushViewController:mainTableViewController animated:YES];
+    
+    HHSearchBarEmbeddedInNavigationBarViewController *searchBarEmbeddedInNavigationViewController = [[HHSearchBarEmbeddedInNavigationBarViewController alloc] init];
+    
+    [self.navigationController pushViewController:searchBarEmbeddedInNavigationViewController animated:YES];
+    
 }
 
 #pragma mark - Table view data source
@@ -195,7 +205,7 @@
     }
 
     // TODO: Configure the content of the cell
-    HHWeatherGroup *weatherGroup = [[[HHWeatherItemStation sharedStation] allWeatherGroups] objectForKey:[[[HHDataManager sharedDataManager] citys] objectAtIndex:indexPath.row]];
+    HHWeatherGroup *weatherGroup = [[[HHWeatherItemStation sharedStation] allWeatherGroups] objectForKey:[[[HHDataManager sharedDataManager] requestedCities] objectAtIndex:indexPath.row]];
     
     NSMutableArray *weatherItems = [weatherGroup weatherItems];
     HHWeatherItem *displayedItem = [weatherItems objectAtIndex:0];
@@ -246,16 +256,24 @@
 #pragma mark - Table view delegate
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    // 消除 cell 选择痕迹
+    [self performSelector:@selector(deselect) withObject:nil afterDelay:0.5f];
+    
     HHDetailViewController *detailViewController = [[HHDetailViewController alloc] init];
     
     // TODO: Deliver the data for detail view
-    detailViewController.cityName = [[[HHDataManager sharedDataManager] citys] objectAtIndex:indexPath.row];
+    detailViewController.cityName = [[[HHDataManager sharedDataManager] requestedCities] objectAtIndex:indexPath.row];
     NSLog(@"detailViewController.cityName: %@", detailViewController.cityName);
     
     [self.navigationController presentViewController:detailViewController animated:YES completion:NULL];
     
    
     
+}
+
+- (void) deselect {
+    
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 }
 
 #pragma mark - MONActivityIndicatorViewDelegate
@@ -271,6 +289,12 @@
     return color;
 }
 
+#pragma mark - Start Animating
+- (void) startAnimating {
+    
+    [self.indicatorView startAnimating];
+}
+
 #pragma mark - Stop Animating
 - (void) stopAnimating {
     
@@ -280,7 +304,7 @@
 #pragma mark - OffLine
 - (void) showAlertView {
     
-    UIAlertView *alertView  = [[UIAlertView alloc] initWithTitle:@"警告" message:@"您的网络未连接，前检查蜂窝网络状况！" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];
+    UIAlertView *alertView  = [[UIAlertView alloc] initWithTitle:@"警告" message:@"您的网络未连接，请检查蜂窝网络状况！" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];
     
     [alertView show];
 }
@@ -289,6 +313,7 @@
 
 - (void) dealloc {
     
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }

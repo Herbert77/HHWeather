@@ -56,11 +56,8 @@
     
 
     // Create weather data Source
-    HHWeatherItemStation *weatherItemStation = [HHWeatherItemStation sharedStation];
+//    HHWeatherItemStation *weatherItemStation = [HHWeatherItemStation sharedStation];
     
-    // Get the temp weather data
-//    [weatherItemStation getTempWeatherDataForTest];
-
     // TODO: Set root view controller for the window
     self.window.rootViewController = navigationController;
     

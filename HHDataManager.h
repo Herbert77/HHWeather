@@ -15,12 +15,15 @@
  *  保存天气数据
  *
  */
-@interface HHDataManager : NSObject
+@interface HHDataManager : NSObject 
 
 @property (nonatomic) UITableView *tableView;
 
 // 需要请求数据的城市
-@property (nonatomic) NSMutableArray *citys;
+@property (nonatomic, strong) NSMutableArray *requestedCities;
+
+// 用户在搜索栏目添加的城市
+@property (nonatomic, strong) NSMutableArray *addedRequestedCities;
 
 // 请求的天气数据字典
 @property (nonatomic, copy) NSDictionary *weatherDic;
@@ -29,6 +32,7 @@
 @property (nonatomic, copy) NSDictionary *pmDic;
 
 + (instancetype) sharedDataManager;
+
 
 // 对需要天气信息的城市属性的增删方法
 - (void) addCity:(NSString *)cityName;
@@ -56,5 +60,17 @@
  *  @return 天气图标名
  */
 - (NSString *) typeForWeather:(NSString *)string;
+
+// 当用户在搜索栏添加城市以后，刷新城市数据，请求新增城市的天气信息
+- (void) refreshWeatherData:(NSMutableArray *)citiesMutableArray;
+- (void) refreshWeatherData_2:(NSMutableArray *)citiesMutableArray;
+
+- (void) saveCitysData;
+
+- (void) printRequestedCities;
+
+- (void) printAddedRequestedCities;
+
+- (BOOL) thereIsTheCity:(NSString *)cityName;
 
 @end

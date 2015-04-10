@@ -27,7 +27,7 @@ NSString *const method = @"GET";
 static int count;
 static int countForError;
 
-@interface HHDataManager ()
+@interface HHDataManager () 
 
 @end
 
@@ -43,6 +43,7 @@ static int countForError;
     return dataManager;
 }
 
+
 // No permission to use this method
 - (instancetype) init {
     
@@ -57,9 +58,27 @@ static int countForError;
     self = [super init];
     
     if (self) {
-        self.citys = [[NSMutableArray alloc] init];
-        self.weatherDic = [[NSDictionary alloc] init];
-        self.pmDic = [[NSDictionary alloc] init];
+
+//        NSFileManager *fileManager = [[NSFileManager alloc] init];
+//        [fileManager removeItemAtPath:[NSTemporaryDirectory() stringByAppendingString:@"allCitys.txt"] error:nil];
+
+//        NSArray *tempArray  = [NSKeyedUnarchiver unarchiveObjectWithFile:[NSTemporaryDirectory() stringByAppendingString:@"allCitys.txt"]];
+//        
+//        self.requestedCities = [[NSMutableArray alloc] initWithArray:tempArray];
+        
+//        NSString *filePath = [NSTemporaryDirectory() stringByAppendingString:@"myCities.txt"];
+//
+//        _requestedCities = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
+        _requestedCities = [[NSMutableArray alloc] init];
+        _addedRequestedCities = [[NSMutableArray alloc] init];
+        
+        NSLog(@"self.citys %@", self.requestedCities);
+        
+        _weatherDic = [[NSDictionary alloc] init];
+        _pmDic = [[NSDictionary alloc] init];
+        
+       
+
         
         // TODO:initialization for JuheApiSDK
         [[JHOpenidSupplier shareSupplier] registerJuheAPIByOpenId:@"JH31e5fac42442d0b8f4cebc4ca717f7c7"];
@@ -68,6 +87,26 @@ static int countForError;
     return self;
 }
 
+#pragma mark - Encode And Decode
+//- (void) encodeWithCoder:(NSCoder *)aCoder {
+//    
+//    [aCoder encodeObject:self.citys forKey:kCitysKey];
+//}
+//
+//- (instancetype) initWithCoder:(NSCoder *)aDecoder {
+//    
+//    self = [super init];
+//    
+//    if (self != nil) {
+//        
+//        _citys = [aDecoder decodeObjectForKey:kCitysKey];
+//    }
+//    
+//    return self;
+//}
+
+
+
 /**
  *  需要请求天气数据的城市属性的增删方法
  *
@@ -75,13 +114,14 @@ static int countForError;
  */
 - (void) addCity:(NSString *)cityName {
     
-    [self.citys addObject:cityName];
+    [_addedRequestedCities addObject:cityName];
 }
 
 - (void) removeCity:(NSString *)cityName {
     
-    [self.citys removeObject:cityName];
+    [_requestedCities removeObject:cityName];
 }
+
 
 /**
  *  依据城市名来请求天气数据
@@ -98,14 +138,14 @@ static int countForError;
       
         self.weatherDic = [responseObject objectForKey:@"result"];
         NSLog(@"1");
-      
+    
        
     } Failure:^(NSError *error) {
         
         NSLog(@"error: %@", error.description);
         
         countForError++;
-        if (countForError == [[self citys] count]) {
+        if (countForError == [[self requestedCities] count]) {
             
             [[NSNotificationCenter defaultCenter] postNotificationName:@"OffLine" object:self];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"DataLoaded" object:self];
@@ -192,7 +232,7 @@ static int countForError;
     [weatherGroup addWeatherItems:@[todayItem, tomoItem, afterTomoItem]];
     
     
-    // 把该天气组添加到天气中心
+    // 把该天气组添加到天气中心f
     [[HHWeatherItemStation sharedStation] addWeatherGroup:weatherGroup forCity:cityName];
     
     NSLog(@"todayItem: %@", [todayItem description]);
@@ -205,7 +245,7 @@ static int countForError;
     NSLog(@"count: %i", count);
     
     // 如果这是该方法最后一次运行
-    if (count == [[self citys] count]) {
+    if (count == [[self requestedCities] count]) {
         
         [[NSNotificationCenter defaultCenter] postNotificationName:@"DataLoaded" object:self];
     }
@@ -278,6 +318,97 @@ static int countForError;
         
     return nil;
     
+}
+
+
+// 智能请求需要显示的城市天气信息
+- (void) refreshWeatherData:(NSMutableArray *)citiesMutableArray {
+    
+    for (int i = 0; i < [citiesMutableArray count]; i++) {
+        
+        NSLog(@" count %i",i);
+        [self performSelector:@selector(requestWeatherDataForCity:) withObject:citiesMutableArray[i] afterDelay:(0.1 + i*0.4)];
+    }
+    
+    
+}
+
+- (void) refreshWeatherData_2:(NSMutableArray *)citiesMutableArray {
+    
+    
+//    [_requestedCities addObjectsFromArray:citiesMutableArray];
+
+    
+    int countNumber = (int)[citiesMutableArray count];
+    
+    NSLog(@"countNumber: %i", countNumber);
+    
+    for (int i = 0; i < countNumber; i++) {
+        
+        NSString *cityString = [[NSString alloc] initWithFormat:@"%@", citiesMutableArray[i]];
+        
+        NSLog(@"cityString: %@", cityString);
+        
+        [_requestedCities addObject:cityString];
+       
+    }
+
+    
+    
+    for (int i = 0; i < countNumber; i++) {
+        
+        
+        [self performSelector:@selector(requestWeatherDataForCity:) withObject:citiesMutableArray[i] afterDelay:(0.1 + i*0.4)];
+
+    }
+    
+//    NSMutableArray *newMutableArray = [[NSMutableArray alloc] init];
+//    citiesMutableArray = newMutableArray;
+    
+    [citiesMutableArray removeAllObjects];
+    NSLog(@"citiesMutableArray is empty ? %@", citiesMutableArray);
+    
+}
+
+
+
+
+// 保存需要请求天气信息的城市
+- (void) saveCitysData {
+    
+//    NSString *filePath = [NSTemporaryDirectory() stringByAppendingString:@"allCitys.txt"];
+    
+    NSString *filePath = [NSTemporaryDirectory() stringByAppendingString:@"myCities.txt"];
+    [self.requestedCities writeToFile:filePath atomically:YES];
+    
+}
+
+
+- (void) printRequestedCities {
+    
+    
+    NSLog(@"Print: %@", self.requestedCities);
+}
+
+- (void) printAddedRequestedCities {
+    
+    NSLog(@"Print added: %@", self.addedRequestedCities);
+}
+
+
+- (BOOL) thereIsTheCity:(NSString *)cityName {
+    
+    for (int i = 0; i < [_requestedCities count]; i++) {
+        
+        if ([[_requestedCities objectAtIndex:i] isEqualToString:cityName]) {
+            
+            return YES;
+        }
+        
+        
+    }
+    
+    return NO;
 }
 
 @end

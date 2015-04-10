@@ -126,7 +126,7 @@ NSString *const afterTomorrow = @"后日";
     // Back button
     UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(306, 18, 65, 35)];
     [backButton addTarget:self action:@selector(backButtonIsTapped:) forControlEvents:UIControlEventTouchUpInside];
-    [backButton setImage:[UIImage imageNamed:@"downButton"] forState:UIControlStateNormal];
+    [backButton setImage:[UIImage imageNamed:@"downButton_lightGreen"] forState:UIControlStateNormal];
     backButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.view addSubview:backButton];
     

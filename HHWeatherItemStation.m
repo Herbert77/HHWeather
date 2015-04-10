@@ -10,9 +10,16 @@
 #import "HHWeatherItem.h"
 #import "HHWeatherGroup.h"
 
+#import "JHAPISDK.h"
+#import "JHOpenidSupplier.h"
+
+
 @interface HHWeatherItemStation ()
 
 @property (nonatomic) NSMutableDictionary *allPrivateWeatherGroups;
+
+@property (nonatomic, copy) NSArray *citysArray;
+@property (nonatomic, copy) NSMutableArray *MutableArray;
 
 @end
 
@@ -46,6 +53,16 @@
     if (self) {
         
         _allPrivateWeatherGroups = [[NSMutableDictionary alloc] init];
+        
+        // 从 citys.txt 文件中读取到具有天气数据的所有城市，该 NSArray对象由 HHWeatherStation持有
+//        NSString *filePath = [NSTemporaryDirectory() stringByAppendingPathComponent:@"citys.txt"];
+        
+        _citysArray = [[NSArray alloc] init];
+        _MutableArray = [[NSMutableArray alloc] init];
+
+        _cityList = [[NSArray alloc] init];
+
+        NSLog(@"_cityList: %@", _cityList);
     }
     
     return self;
@@ -66,35 +83,83 @@
     return self.allPrivateWeatherGroups;
 }
 
-//- (NSArray *) allWeatherItems {
-//    
-//    return self.allPrivateWeatherItems;
-//}
+/**
+ *  请求到提供天气信息的城市列表
+ *  写入 AvailableCities.plist 文件中
+ */
+- (void) requestAllAvailableCitys {
+    
+    // 1. 请求到 Json 数据
+    JHAPISDK *juheapi = [JHAPISDK shareJHAPISDK];
+    
+    [juheapi executeWorkWithAPI:@"http://v.juhe.cn/weather/citys" APIID:@"39" Parameters:nil Method:@"GET" Success:^(id responseObject) {
+        
+        self.citysArray = [responseObject objectForKey:@"result"];
+        
+        NSLog(@"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        //        NSLog(@"%@", self.citysArray);
+        
+        // 对请求到的字典数据进行分层剥离
+        NSDictionary *tempDic = [[NSDictionary alloc] init];
+        
+        [self.MutableArray addObject:@"北京"];
+        
+        NSLog(@"lastObject: %@", [self.MutableArray lastObject]);
+        
+        for (int i = 0; i < 2574 ; i++) {
+            
+            tempDic = [self.citysArray objectAtIndex:i];
+            
+            NSString *cityName = [tempDic objectForKey:@"city"];
+            
+            // 如果在数组中，该元素和上一个元素的值不相等，则把该元素添加到可变数组中
+            if ([[self.MutableArray lastObject] isEqualToString:cityName]) {
+                
+            }
+            else {
+                
+                [self.MutableArray addObject:cityName];
+                //                NSLog(@"City_%i: %@", i,cityName);
+                
+            }
+            
+        }
+        
+    
+        NSLog(@"readArray :\n %@", self.MutableArray);
+        
+        self.cityList = self.MutableArray;
+        
+        // 写入文件
+        NSFileManager *fm = [NSFileManager defaultManager];
+        NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *filePath = [path objectAtIndex:0];
+        NSString *plistPath = [filePath stringByAppendingPathComponent:@"AvailableCities.plist"];
+        
+        [fm createFileAtPath:plistPath contents:nil attributes:nil];
+        
+        [self.MutableArray writeToFile:plistPath atomically:YES];
+        
+        
+    } Failure:^(NSError *error) {
+        NSLog(@"error : %@", error.description);
+    }];
+    
+}
 
-//- (HHWeatherItem *) createdItemForCity:(NSString *)cityName {
-//    
-//    HHWeatherItem *item = [[HHWeatherItem alloc] initWithCityName:cityName weather:@"Snow" temperature:@"-3°" wind:@"gale" humidity:@"65%" pmValue:77];
-//    
-//    [self.allPrivateWeatherItems addObject:item];
-//    
-//    return item;
-//}
+- (void) loadTheCityListFromPlist {
+    
+    NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *filePath = [path objectAtIndex:0];
+    NSString *plistPath = [filePath stringByAppendingPathComponent:@"AvailableCities.plist"];
+    
+    NSMutableArray *tempMutableArray = [NSMutableArray arrayWithContentsOfFile:plistPath];
+    
+    self.cityList = tempMutableArray;
+    
+    NSLog(@"%@", tempMutableArray);
 
-//- (void) removeItem:(HHWeatherItem *)weatherItem {
-//    
-//    [self.allPrivateWeatherItems removeObject:weatherItem];
-//}
-
-// Provides the temp weather info data
-//- (void) getTempWeatherDataForTest {
-//    
-//    HHWeatherItem *item_1 = [[HHWeatherItem alloc] initWithCityName:@"WuHan" weather:@"Sunny" temperature:@"25°" wind:@"Breeze" humidity:@"37%" pmValue:34];
-//    HHWeatherItem *item_2 = [[HHWeatherItem alloc] initWithCityName:@"ShangHai" weather:@"Rain" temperature:@"11°" wind:@"gale" humidity:@"87%" pmValue:45];
-//    HHWeatherItem *item_3 = [[HHWeatherItem alloc] initWithCityName:@"ChongQing" weather:@"Sizzler" temperature:@"38°" wind:@"windless" humidity:@"13%" pmValue:19];
-//    
-//    [self.allPrivateWeatherItems addObjectsFromArray:@[item_1, item_2, item_3]];
-//    
-//}
+}
 
 
 @end
