@@ -24,19 +24,25 @@
         _cityNameLabel.font = [UIFont fontWithName:@"AvenirNext-Regular" size:22];
         [self addSubview: _cityNameLabel];
         
-        // Configure weather image view
-        _weatherImageView = [[UIImageView alloc] initWithFrame:CGRectMake(195, 14, 51, 47)];
+        // Configure weather image view (51, 47)
+        _weatherImageView = [[UIImageView alloc] initWithFrame:CGRectMake(195, 14, 55, 55)];
         _weatherImageView.backgroundColor = [UIColor clearColor];
+        _weatherImageView.contentMode = UIViewContentModeScaleAspectFit;
         [self addSubview:_weatherImageView];
         
         // Configure temperature label
-        _tempLabel = [[UILabel alloc] initWithFrame:CGRectMake(292, 20, 60, 35)];
+        _tempLabel = [[UILabel alloc] initWithFrame:CGRectMake(272, 20, 100, 35)];
         _tempLabel.textColor = [[HHWeatherColor sharedColorPalette] colorForText];
         _tempLabel.font = [UIFont fontWithName:@"Avenir-Light" size:26];
         [self addSubview:_tempLabel];
         
         [self setHighlighted:YES animated:YES];
         
+        _indicatorLine = [[UIView alloc] initWithFrame:CGRectMake(22, 75.1, self.bounds.size.width + 100, 0.9)];
+        _indicatorLine.backgroundColor = [UIColor whiteColor];
+        _indicatorLine.alpha = 0.35;
+        [self addSubview:_indicatorLine];
+
     }
     
     return self;

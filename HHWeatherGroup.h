@@ -18,4 +18,6 @@
 
 - (void) addWeatherItems:(NSArray *) weatherArray;
 
+//- (NSMutableArray *) weatherItems;
+
 @end

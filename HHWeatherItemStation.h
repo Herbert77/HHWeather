@@ -17,6 +17,8 @@
 // Singleton instance
 @property (nonatomic, readonly) NSMutableDictionary *allWeatherGroups;
 
+@property (nonatomic, copy) NSArray *cityList;
+
 + (instancetype) sharedStation;
 
 - (void) addWeatherGroup:(HHWeatherGroup *)weatherGroup forCity:(NSString *)cityName;
@@ -27,5 +29,9 @@
 //- (void) removeItem:(HHWeatherItem *)weatherItem;
 
 // For test
-- (void) getTempWeatherDataForTest;
+//- (void) getTempWeatherDataForTest;
+
+- (void) requestAllAvailableCitys;
+- (void) loadTheCityListFromPlist;
+
 @end

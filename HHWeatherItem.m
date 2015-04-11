@@ -10,7 +10,7 @@
 
 @implementation HHWeatherItem
 
-- (instancetype) initWithCityName:(NSString *)cityName weather:(NSString *)weather temperature:(NSString *)temperature wind:(NSString *)wind humidity:(NSString *)humidity pmValue:(NSString *)pmValue{
+- (instancetype) initWithCityName:(NSString *)cityName weather:(NSString *)weather temperature:(NSString *)temperature currentTemp:(NSString *)currentTemp wind:(NSString *)wind humidity:(NSString *)humidity pmValue:(NSString *)pmValue {
     
     self = [super init];
     
@@ -19,6 +19,7 @@
         _cityName = cityName;
         _weather = weather;
         _temperature = temperature;
+        _currentTemp = currentTemp;
         _wind = wind;
         _humidity = humidity;
         _pmValue = pmValue;
@@ -29,7 +30,7 @@
 
 - (NSString *)description {
     
-    NSString *descritionString = [NSString stringWithFormat:@"%@: %@ %@ %@ %@ %@", self.cityName, self.weather, self.temperature, self.wind, self.humidity, self.pmValue];
+    NSString *descritionString = [NSString stringWithFormat:@"%@: %@ %@ %@ %@ %@ %@", self.cityName, self.weather, self.temperature, self.currentTemp, self.wind, self.humidity, self.pmValue];
     
     return descritionString;
 }

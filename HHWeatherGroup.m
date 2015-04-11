@@ -36,5 +36,9 @@
     [self.weatherItems addObjectsFromArray:weatherArray];
 }
 
+//- (NSMutableArray *) weatherItems {
+//    
+//    return self.weatherItems;
+//}
 
 @end

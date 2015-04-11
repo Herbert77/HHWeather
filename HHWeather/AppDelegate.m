@@ -11,6 +11,7 @@
 #import "HHHomeViewController.h"
 #import "HHWeatherItemStation.h"
 
+#import "HHDataManager.h"
 
 @interface AppDelegate ()
 
@@ -56,11 +57,8 @@
     
 
     // Create weather data Source
-    HHWeatherItemStation *weatherItemStation = [HHWeatherItemStation sharedStation];
+//    HHWeatherItemStation *weatherItemStation = [HHWeatherItemStation sharedStation];
     
-    // Get the temp weather data
-//    [weatherItemStation getTempWeatherDataForTest];
-
     // TODO: Set root view controller for the window
     self.window.rootViewController = navigationController;
     
@@ -68,6 +66,12 @@
     [self.window makeKeyAndVisible];
     
     return YES;
+}
+
+// APP 无横屏状态
+- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
+{
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -90,6 +94,9 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    
+    // 对城市列表进行数据存储
+    [[HHDataManager sharedDataManager] saveCitysData];
 }
 
 @end
