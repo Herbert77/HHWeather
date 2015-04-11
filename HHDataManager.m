@@ -171,8 +171,7 @@ static int countForError;
         
         NSArray *result = [responseObject objectForKey:@"result"];
         self.pmDic = result[0];
-//        NSDictionary *pmValue = [dic objectForKey:@"PM2.5"];
-//        NSString *cityString = [self.pmDic objectForKey:@"city"];
+
         NSLog(@"2");
         
         NSLog(@"Create the weather data model~");
