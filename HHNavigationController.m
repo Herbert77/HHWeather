@@ -23,7 +23,7 @@
     _pulldownMenu = [[PulldownMenu alloc] initWithNavigationController:self];
     [self.view insertSubview:_pulldownMenu belowSubview:self.navigationBar];
     
-    [_pulldownMenu insertButton:@"Settings"];
+//    [_pulldownMenu insertButton:@"Settings"];
     [_pulldownMenu insertButton:@"Profile"];
     [_pulldownMenu insertButton:@"Feed back"];
     
@@ -38,13 +38,13 @@
     
     NSLog(@"%ld", (long)indexPath.item);
     
+//    if (indexPath.item == 0) {
+//        
+//        // TODO: Setting VC
+//        HHSettingsTableController *settingsTableController = [[HHSettingsTableController alloc] init];
+//        [self presentViewController:settingsTableController animated:YES completion:nil];
+//    }
     if (indexPath.item == 0) {
-        
-        // TODO: Setting VC
-        HHSettingsTableController *settingsTableController = [[HHSettingsTableController alloc] init];
-        [self presentViewController:settingsTableController animated:YES completion:nil];
-    }
-    else if (indexPath.item == 1) {
 
         HHProfileViewController *profileViewController = [[HHProfileViewController alloc] init];
         [self presentViewController:profileViewController animated:YES completion:nil];

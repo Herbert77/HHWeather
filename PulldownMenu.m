@@ -173,12 +173,18 @@
 //    cell.textLabel.font = cellFont;
 //    [cell.textLabel setText:[menuItems objectAtIndex:indexPath.item]];
     
-    NSArray *imageNamesArray = @[@"setting_icon",
+    // @"setting_icon",
+    NSArray *imageNamesArray = @[
                                  @"AboutMe_icon",
                                  @"feedBack_icon"];
-    NSArray *textArray = @[@"Settings",
-                           @"Profile",
-                           @"Feed back"];
+//    NSArray *textArray = @[@"Settings",
+//                           @"Profile",
+//                           @"Feed back"];
+    
+    // @"设置",
+    NSArray *textArray = @[
+                           @"关于",
+                           @"让它更好"];
     
     [cell.customImageView setImage:[UIImage imageNamed:[imageNamesArray objectAtIndex:indexPath.row]]];
     cell.customLabel.text = [textArray objectAtIndex:indexPath.row];

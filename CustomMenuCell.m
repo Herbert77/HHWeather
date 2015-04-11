@@ -33,7 +33,7 @@
     if (self) {
         
         // Configure the image view
-        _customImageView = [[UIImageView alloc] initWithFrame:CGRectMake(40, 10, 30, 30)];
+        _customImageView = [[UIImageView alloc] initWithFrame:CGRectMake(45, 13, 25, 25)];
         _customImageView.backgroundColor = [UIColor clearColor];
         _customImageView.contentMode = UIViewContentModeScaleAspectFit;
         [self addSubview:_customImageView];
@@ -41,7 +41,7 @@
         // Configure the text label
         _customLabel = [[UILabel alloc] initWithFrame:CGRectMake(135, 15, 120, 23)];
         _customLabel.textColor = [[HHWeatherColor sharedColorPalette] colorForText];
-        _customLabel.font = [UIFont fontWithName:@"AvenirNext-UltraLight" size:20];
+        _customLabel.font = [UIFont fontWithName:@"AvenirNext" size:16];
         [self addSubview:_customLabel];
     }
     

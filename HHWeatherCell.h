@@ -14,4 +14,6 @@
 @property (nonatomic, strong)  UIImageView *weatherImageView;
 @property (nonatomic, strong)  UILabel *tempLabel;
 
+@property (nonatomic, strong) UIView *indicatorLine;
+
 @end

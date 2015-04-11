@@ -18,4 +18,10 @@
 @property (nonatomic, strong) UILabel     *windLabel;
 @property (nonatomic, strong) UILabel     *humidityLabel;
 
+// Additional property
+// 今日天气的温度变化范围label
+@property (nonatomic, strong) UILabel     *tempRangeLabel;
+@property (nonatomic, strong) UILabel     *pmValueLabel;
+
+
 @end

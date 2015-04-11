@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "ThunderStorm.png"
+      "filename" : "thunderStorm.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "ThunderStorm@2x.png"
+      "filename" : "thunderStorm@2x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "ThunderStorm@3x.png"
+      "filename" : "thunderStorm@3x.png"
     }
   ],
   "info" : {
