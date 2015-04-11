@@ -48,13 +48,6 @@
         
         [[NSNotificationCenter defaultCenter] postNotificationName:@"StartAnimating" object:self];
     }
-
-    // 对城市列表进行数据存储
-//    [[HHDataManager sharedDataManager] saveCitysData];
-    
-
-    
-    
 }
 
 @end

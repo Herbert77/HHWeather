@@ -36,7 +36,6 @@
 		E5D373F41AD36B81001D1F51 /* HHSearchControllerBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D373F31AD36B81001D1F51 /* HHSearchControllerBaseViewController.m */; };
 		E5D373F71AD37450001D1F51 /* HHSearchBarEmbeddedInNavigationBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D373F61AD37450001D1F51 /* HHSearchBarEmbeddedInNavigationBarViewController.m */; };
 		E5D373FA1AD3757B001D1F51 /* HHSearchResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5D373F91AD3757B001D1F51 /* HHSearchResultsViewController.m */; };
-		E5F904F11AD63EB200319769 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5F904F01AD63EB200319769 /* Reveal.framework */; };
 		E5FC08121A9DDD660012B6CC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FC08111A9DDD660012B6CC /* main.m */; };
 		E5FC08151A9DDD660012B6CC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E5FC08141A9DDD660012B6CC /* AppDelegate.m */; };
 		E5FC081D1A9DDD660012B6CC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5FC081C1A9DDD660012B6CC /* Images.xcassets */; };
@@ -105,7 +104,6 @@
 		E5D373F61AD37450001D1F51 /* HHSearchBarEmbeddedInNavigationBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHSearchBarEmbeddedInNavigationBarViewController.m; sourceTree = "<group>"; };
 		E5D373F81AD3757B001D1F51 /* HHSearchResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HHSearchResultsViewController.h; sourceTree = "<group>"; };
 		E5D373F91AD3757B001D1F51 /* HHSearchResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HHSearchResultsViewController.m; sourceTree = "<group>"; };
-		E5F904F01AD63EB200319769 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		E5FC080C1A9DDD660012B6CC /* HHWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HHWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5FC08101A9DDD660012B6CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E5FC08111A9DDD660012B6CC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -136,7 +134,6 @@
 				E56733FE1AB52ECD007E0183 /* CoreTelephony.framework in Frameworks */,
 				E56733F61AB52E2D007E0183 /* libc++.dylib in Frameworks */,
 				E58B88A91AA7EB3500A6BC60 /* MessageUI.framework in Frameworks */,
-				E5F904F11AD63EB200319769 /* Reveal.framework in Frameworks */,
 				15F483B5E98FFFE016FBDDA4 /* libPods.a in Frameworks */,
 				E56733FC1AB52E58007E0183 /* JuheApisSDK.a in Frameworks */,
 			);
@@ -273,7 +270,6 @@
 		E5FC08031A9DDD660012B6CC = {
 			isa = PBXGroup;
 			children = (
-				E5F904F01AD63EB200319769 /* Reveal.framework */,
 				E56733F71AB52E58007E0183 /* include */,
 				E56733FB1AB52E58007E0183 /* JuheApisSDK.a */,
 				E5051DD31AA1D69B00CD88F2 /* TableCell.xib */,

@@ -100,6 +100,7 @@
     // 更新天气数据
     [[HHDataManager sharedDataManager] refreshWeatherData_2: [[HHDataManager sharedDataManager] addedRequestedCities]];
     
+    
 }
 
 //- (void)requestData:(NSString *)cityName {
@@ -138,7 +139,7 @@
     
     
     //@"武汉", @"衡水", @"广州", @"西安", @"重庆" @[@"武汉", @"呼和浩特",@"上海"]
-    [[HHDataManager sharedDataManager] setRequestedCities:[NSMutableArray arrayWithArray:@[@"武汉"]]];
+//    [[HHDataManager sharedDataManager] setRequestedCities:[NSMutableArray arrayWithArray:@[@"武汉"]]];
     
 
     NSMutableArray *citys = [[HHDataManager sharedDataManager] requestedCities];
@@ -246,7 +247,12 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         
         // TODO: Delete the weather city from the data Modal
+        [[HHWeatherItemStation sharedStation] removeWeatherGroupForCity:[[[HHDataManager sharedDataManager] requestedCities] objectAtIndex:indexPath.row]];
         
+        [[HHDataManager sharedDataManager] removeCity:[[[HHDataManager sharedDataManager] requestedCities] objectAtIndex:indexPath.row]];
+        
+      
+        NSLog(@"indexPath %li", (long)indexPath.row);
         
         // Delete the cells on the basis of indexPath
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationLeft];

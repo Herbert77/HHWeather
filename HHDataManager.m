@@ -67,9 +67,22 @@ static int countForError;
 //        self.requestedCities = [[NSMutableArray alloc] initWithArray:tempArray];
         
 //        NSString *filePath = [NSTemporaryDirectory() stringByAppendingString:@"myCities.txt"];
-//
 //        _requestedCities = [NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
-        _requestedCities = [[NSMutableArray alloc] init];
+        
+        
+        NSString*documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES)firstObject];
+        NSString*filePath = [documentsPath stringByAppendingPathComponent:@"file.txt"];
+        
+        NSArray *tempArray = [NSArray arrayWithContentsOfFile:filePath];
+        
+        _requestedCities = [tempArray mutableCopy];
+        
+        if (_requestedCities == NULL) {
+            _requestedCities = [[NSMutableArray alloc] init];
+        }
+        
+        
+        
         _addedRequestedCities = [[NSMutableArray alloc] init];
         
         NSLog(@"self.citys %@", self.requestedCities);
@@ -240,12 +253,18 @@ static int countForError;
     NSLog(@"afterTomoItem: %@", [afterTomoItem description]);
     
     // 记录该方法运行的次数
-    count++;
+//    count++;
+//    
+//    NSLog(@"count: %i", count);
+//    
+//    // 如果这是该方法最后一次运行
+//    if (count == [[self requestedCities] count]) {
+//        
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"DataLoaded" object:self];
+//    }
     
-    NSLog(@"count: %i", count);
-    
-    // 如果这是该方法最后一次运行
-    if (count == [[self requestedCities] count]) {
+    // 判断所有的请求是否完成，如果完成，则停止加载指示视图
+    if ([[self requestedCities] count] == [[[HHWeatherItemStation sharedStation] allWeatherGroups] count]) {
         
         [[NSNotificationCenter defaultCenter] postNotificationName:@"DataLoaded" object:self];
     }
@@ -324,19 +343,24 @@ static int countForError;
 // 智能请求需要显示的城市天气信息
 - (void) refreshWeatherData:(NSMutableArray *)citiesMutableArray {
     
-    for (int i = 0; i < [citiesMutableArray count]; i++) {
-        
-        NSLog(@" count %i",i);
-        [self performSelector:@selector(requestWeatherDataForCity:) withObject:citiesMutableArray[i] afterDelay:(0.1 + i*0.4)];
-    }
+    NSLog(@"refreshWeatherData_citiesMutableArray:  %@", citiesMutableArray);
     
+    if ([citiesMutableArray count] != 0) {
+    
+        for (int i = 0; i < [citiesMutableArray count]; i++) {
+            
+            NSLog(@" count %i",i);
+            [self performSelector:@selector(requestWeatherDataForCity:) withObject:citiesMutableArray[i] afterDelay:(0.1 + i*0.4)];
+        }
+    } // 如果这个数组中没有元素，则停止 activityIndicatorView 的加载提示动画
+    else {
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"DataLoaded" object:self];
+    }
     
 }
 
 - (void) refreshWeatherData_2:(NSMutableArray *)citiesMutableArray {
-    
-    
-//    [_requestedCities addObjectsFromArray:citiesMutableArray];
 
     
     int countNumber = (int)[citiesMutableArray count];
@@ -376,10 +400,26 @@ static int countForError;
 // 保存需要请求天气信息的城市
 - (void) saveCitysData {
     
-//    NSString *filePath = [NSTemporaryDirectory() stringByAppendingString:@"allCitys.txt"];
+//    NSString *filePath = [NSTemporaryDirectory() stringByAppendingString:@"myCities.txt"];
+//    
+//    NSDictionary *dic = @{@"array":self.requestedCities};
+//    [dic writeToFile:filePath atomically:YES];
+
+    NSString*documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES)firstObject];
+    NSString*filePath = [documentsPath stringByAppendingPathComponent:@"file.txt"];
     
-    NSString *filePath = [NSTemporaryDirectory() stringByAppendingString:@"myCities.txt"];
-    [self.requestedCities writeToFile:filePath atomically:YES];
+    NSArray *tempArray = [_requestedCities copy];
+    
+    BOOL sign = [tempArray writeToFile:filePath atomically:YES];
+    
+    if (sign == YES) {
+        
+        NSLog(@"Success in writting to file.");
+    }
+    else {
+        
+        NSLog(@"Failed to write to file.");
+    }
     
 }
 
