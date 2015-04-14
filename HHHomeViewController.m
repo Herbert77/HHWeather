@@ -131,7 +131,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAlertView) name:@"OffLine" object:nil];
     
     // TODO:Check the network status
-    NSLog(@"self.netWorkAvailable %id", self.netWorkAvailable);
+//    NSLog(@"self.netWorkAvailable %id", self.netWorkAvailable);
     
     
     [HHDataManager sharedDataManager].tableView = self.tableView;

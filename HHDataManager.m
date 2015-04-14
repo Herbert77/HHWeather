@@ -24,7 +24,7 @@ NSString *const WeatherPath = @"http://v.juhe.cn/weather/index";
 NSString *const WeatherAPI_Id = @"39";
 NSString *const method = @"GET";
 
-static int count;
+//static int count;
 static int countForError;
 
 @interface HHDataManager () 
